@@ -1,0 +1,677 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Odds Compare - Mobile App Prototype</title>
+<style>
+    * { box-sizing: border-box; }
+    :root {
+        --blue: #0878f9;
+        --blue-dark: #0567d9;
+        --bg: #f3f5f8;
+        --card: #ffffff;
+        --text: #162033;
+        --muted: #667085;
+        --line: #e6e9ee;
+        --green: #16a34a;
+        --green-bg: #eaf8ef;
+    }
+
+    body {
+        margin: 0;
+        font-family: Arial, Helvetica, sans-serif;
+        background: var(--bg);
+        color: var(--text);
+    }
+
+    .app-shell {
+        width: 100%;
+        max-width: 720px;
+        margin: 0 auto;
+        min-height: 100vh;
+        background: var(--bg);
+    }
+
+    .topbar {
+        position: sticky;
+        top: 0;
+        z-index: 20;
+        background: var(--blue);
+        color: #fff;
+        padding: 14px 16px 13px;
+        box-shadow: 0 2px 8px rgba(0,0,0,.13);
+    }
+
+    .brand {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-bottom: 12px;
+    }
+
+    .brand-title {
+        font-weight: 800;
+        font-size: 20px;
+        letter-spacing: -.2px;
+    }
+
+    .brand-badge {
+        font-size: 11px;
+        padding: 5px 8px;
+        border: 1px solid rgba(255,255,255,.35);
+        border-radius: 999px;
+        background: rgba(255,255,255,.14);
+    }
+
+    .controls {
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 8px;
+    }
+
+    .search {
+        width: 100%;
+        border: 0;
+        border-radius: 9px;
+        padding: 11px 12px;
+        font-size: 14px;
+        outline: none;
+    }
+
+    .format {
+        border: 0;
+        border-radius: 9px;
+        padding: 0 10px;
+        min-width: 98px;
+        font-size: 13px;
+        background: #fff;
+        color: #222;
+    }
+
+    .content {
+        padding: 12px;
+    }
+
+    .section-title {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin: 4px 2px 10px;
+    }
+
+    .section-title h1 {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .updated {
+        color: var(--muted);
+        font-size: 11px;
+    }
+
+    .loading, .empty, .error {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 12px;
+        padding: 24px 16px;
+        text-align: center;
+        color: var(--muted);
+    }
+
+    .fixture-card {
+        background: var(--card);
+        border: 1px solid var(--line);
+        border-radius: 14px;
+        margin-bottom: 12px;
+        overflow: hidden;
+        box-shadow: 0 2px 8px rgba(22,32,51,.05);
+    }
+
+    .fixture-head {
+        padding: 13px 14px 10px;
+    }
+
+    .date {
+        color: var(--muted);
+        font-size: 11px;
+        font-weight: 700;
+        margin-bottom: 8px;
+        text-transform: uppercase;
+        letter-spacing: .25px;
+    }
+
+    .teams {
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        align-items: center;
+        gap: 10px;
+    }
+
+    .team {
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1.2;
+    }
+
+    .team.away {
+        text-align: right;
+    }
+
+    .vs {
+        color: #98a2b3;
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .best-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 7px;
+        padding: 0 10px 10px;
+    }
+
+    .best-box {
+        border: 1px solid var(--line);
+        border-radius: 10px;
+        padding: 9px 7px;
+        text-align: center;
+        background: #fafbfc;
+        min-width: 0;
+    }
+
+    .best-label {
+        font-size: 10px;
+        color: var(--muted);
+        font-weight: 700;
+        margin-bottom: 5px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    .best-odds {
+        display: inline-block;
+        min-width: 48px;
+        padding: 7px 8px;
+        border-radius: 8px;
+        font-size: 17px;
+        font-weight: 900;
+        color: #0f7a35;
+        background: var(--green-bg);
+    }
+
+    .best-bookmaker {
+        margin-top: 5px;
+        font-size: 9px;
+        color: var(--muted);
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .compare-btn {
+        width: 100%;
+        border: 0;
+        border-top: 1px solid var(--line);
+        background: #fff;
+        padding: 12px 14px;
+        color: var(--blue);
+        font-weight: 800;
+        cursor: pointer;
+        font-size: 13px;
+    }
+
+    .compare-btn:active {
+        background: #f6f9ff;
+    }
+
+    .comparison {
+        display: none;
+        border-top: 1px solid var(--line);
+        background: #fbfcfe;
+        padding: 8px 10px 10px;
+    }
+
+    .comparison.open {
+        display: block;
+    }
+
+    .compare-header, .bookmaker-row {
+        display: grid;
+        grid-template-columns: minmax(105px, 1.45fr) repeat(3, minmax(58px, .7fr));
+        gap: 6px;
+        align-items: center;
+    }
+
+    .compare-header {
+        padding: 7px 6px;
+        color: var(--muted);
+        font-size: 10px;
+        font-weight: 800;
+        text-transform: uppercase;
+    }
+
+    .compare-header div:not(:first-child) {
+        text-align: center;
+    }
+
+    .bookmaker-row {
+        background: #fff;
+        border: 1px solid var(--line);
+        border-radius: 9px;
+        padding: 8px 6px;
+        margin-bottom: 6px;
+    }
+
+    .bookmaker-link {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        min-width: 0;
+        text-decoration: none;
+        color: var(--text);
+        font-size: 11px;
+        font-weight: 700;
+    }
+
+    .bookmaker-logo {
+        width: 42px;
+        height: 20px;
+        object-fit: contain;
+        flex: 0 0 auto;
+    }
+
+    .bookmaker-name {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .price {
+        text-align: center;
+        font-size: 12px;
+        font-weight: 800;
+        padding: 6px 3px;
+        border-radius: 7px;
+        background: #f5f6f8;
+    }
+
+    .price.best {
+        background: var(--green-bg);
+        color: #0f7a35;
+        outline: 1px solid #bde9ca;
+    }
+
+    .footer-space {
+        height: 16px;
+    }
+
+    @media (min-width: 800px) {
+        body {
+            padding: 28px 0;
+        }
+
+        .app-shell {
+            min-height: calc(100vh - 56px);
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 14px 45px rgba(0,0,0,.15);
+        }
+
+        .topbar {
+            position: relative;
+        }
+
+        .content {
+            padding: 16px;
+        }
+    }
+
+    @media (max-width: 390px) {
+        .content { padding: 9px; }
+        .fixture-head { padding: 12px 11px 9px; }
+        .best-grid { gap: 5px; padding: 0 8px 9px; }
+        .best-box { padding: 8px 4px; }
+        .best-odds { font-size: 16px; min-width: 44px; }
+        .compare-header, .bookmaker-row {
+            grid-template-columns: minmax(92px, 1.25fr) repeat(3, minmax(50px, .65fr));
+            gap: 4px;
+        }
+    }
+</style>
+</head>
+<body>
+<div class="app-shell">
+    <div class="topbar">
+        <div class="brand">
+            <div class="brand-title">Odds Compare</div>
+            <div class="brand-badge">Premier League</div>
+        </div>
+        <div class="controls">
+            <input id="search" class="search" type="search" placeholder="Search team..." autocomplete="off">
+            <select id="odds-format" class="format">
+                <option value="decimal" selected>Decimal</option>
+                <option value="fractional">Fractional</option>
+            </select>
+        </div>
+    </div>
+
+    <main class="content">
+        <div class="section-title">
+            <h1>Upcoming matches</h1>
+            <div id="updated" class="updated"></div>
+        </div>
+        <div id="fixtures">
+            <div class="loading">Loading odds...</div>
+        </div>
+        <div class="footer-space"></div>
+    </main>
+</div>
+
+<script>
+const API_URL = 'https://martynardelli.pythonanywhere.com/api/odds/soccer_epl';
+let allEvents = [];
+
+const BOOKMAKERS = {
+    'Ladbrokes': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_f188c1dd003e4a9dbc1245f4fcef9643.svg',
+        url: 'https://www.ladbrokes.com'
+    },
+    '888sport': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_2f27e2db91b64833b6f83ad9134c8404.svg',
+        url: 'https://ic.aff-handler.com/C/47564?sr=2016018'
+    },
+    'Betway': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_1f39cd0604a74473a4799626cd1c8de1.svg',
+        url: 'https://www.betway.com'
+    },
+    'Paddy Power': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_fa61aa06c9214868885043cf90f5c329.svg',
+        url: 'https://www.paddypower.com'
+    },
+    'Coral': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_873cefebd12f4acbad7fd256c0a1909c.svg',
+        url: 'https://sports.coral.co.uk'
+    },
+    'Sky Bet': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_ad08346b24e14adaadfceb333f43341f.svg',
+        url: 'https://www.skybet.com'
+    },
+    'Unibet': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_8ce70e4670924b7386311524ebce0398.svg',
+        url: 'https://www.unibet.co.uk'
+    },
+    'Casumo': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_682b3e3e1ef745489a9b2524491a5da9~mv2.jpg',
+        url: 'https://www.casumo.com'
+    },
+    'LeoVegas': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_0010269e19b24f08a0e7f3c559ca36cb~mv2.png',
+        url: 'https://ntrfr.leovegas.com/redirect.aspx?pid=3782484&bid=15023'
+    },
+    'William Hill': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_05f03854d55144c68af85477bafdb155.svg',
+        url: 'https://campaigns.williamhill.com/C.ashx?btag=a_209518b_326c_&affid=1743753&siteid=209518&adid=326&c='
+    },
+    'Mr Green': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_df6854d6705247d6be8af7e866073820~mv2.png',
+        url: 'https://www.mrgreen.com'
+    },
+    'Grosvenor': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_e98904174696438baddd6a1926c3038f~mv2.png',
+        url: 'https://www.grosvenorcasinos.com/sport#home'
+    },
+    'Betfair': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_947e5944ad53499bb9f7e668905bad4b~mv2.jpeg',
+        url: 'https://www.betfair.com/exchange/plus/'
+    },
+    'Matchbook': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_b4865bc6256e4bcca1ff852109ceab88.svg',
+        url: 'https://www.matchbook.com'
+    },
+    'BoyleSports': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_e1c2773258c6475cbf36151ce4175857.svg',
+        url: 'https://www.boylesports.com'
+    },
+    'Bet Victor': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_6400468a185a45779e20528474ebe8b4.svg',
+        url: 'https://www.betvictor.com'
+    },
+    'Virgin Bet': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_6367f6a1b3e0492c88dc2f3f77703891~mv2.png',
+        url: 'https://www.virginbet.com'
+    },
+    'LiveScore Bet': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_262699b39cc344cd83c80e29a64ee1b3~mv2.png',
+        url: 'https://www.livescorebet.com/uk/'
+    },
+    'Betfair Sportsbook': {
+        logo: 'https://static.wixstatic.com/media/3a64ee_cba442a2bd2e4de7950126a5bd8f07a2~mv2.jpeg',
+        url: 'https://www.betfair.com/betting/'
+    },
+    'Smarkets': {
+        logo: 'https://static.wixstatic.com/shapes/3a64ee_c0ad8dcad6174967a55e0b3b5aa7bb18.svg',
+        url: 'https://www.smarkets.com'
+    }
+};
+
+function gcd(a, b) {
+    return b ? gcd(b, a % b) : Math.abs(a);
+}
+
+function toFractional(decimal) {
+    const precision = 100;
+    const numerator = Math.round((decimal - 1) * precision);
+    const denominator = precision;
+    if (numerator <= 0) return Number(decimal).toFixed(2);
+    const divisor = gcd(numerator, denominator);
+    return `${numerator / divisor}/${denominator / divisor}`;
+}
+
+function formatOdds(value) {
+    if (value == null || Number.isNaN(Number(value))) return '—';
+    const decimal = Number(value);
+    return document.getElementById('odds-format').value === 'fractional'
+        ? toFractional(decimal)
+        : decimal.toFixed(2);
+}
+
+function normalizeData(data) {
+    const games = new Map();
+
+    data.forEach(odd => {
+        const key = `${odd.home_team}__${odd.away_team}__${odd.commence_time}`;
+        if (!games.has(key)) {
+            games.set(key, {
+                home: odd.home_team,
+                away: odd.away_team,
+                commence_time: odd.commence_time,
+                bookmakers: {}
+            });
+        }
+
+        const game = games.get(key);
+        if (!game.bookmakers[odd.bookmaker]) {
+            game.bookmakers[odd.bookmaker] = {};
+        }
+
+        let type = null;
+        if (odd.outcome_name === odd.home_team) type = 'home';
+        else if (odd.outcome_name === odd.away_team) type = 'away';
+        else if ((odd.outcome_name || '').toLowerCase() === 'draw') type = 'draw';
+
+        if (!type) return;
+
+        const price = Number(odd.price);
+        const current = game.bookmakers[odd.bookmaker][type];
+
+        // If the API gives the same bookmaker/outcome more than once,
+        // retain the highest available price.
+        if (current == null || price > current) {
+            game.bookmakers[odd.bookmaker][type] = price;
+        }
+    });
+
+    return Array.from(games.values())
+        .sort((a, b) => new Date(a.commence_time) - new Date(b.commence_time));
+}
+
+function bestFor(game, type) {
+    let best = null;
+
+    Object.entries(game.bookmakers).forEach(([bookmaker, prices]) => {
+        const value = prices[type];
+        if (value == null) return;
+        if (!best || value > best.value) {
+            best = { bookmaker, value };
+        }
+    });
+
+    return best;
+}
+
+function prettyDate(value) {
+    return new Date(value).toLocaleString('en-GB', {
+        weekday: 'short',
+        day: 'numeric',
+        month: 'short',
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+}
+
+function bookmakerCell(name) {
+    const info = BOOKMAKERS[name] || {};
+    const logo = info.logo
+        ? `<img class="bookmaker-logo" src="${info.logo}" alt="">`
+        : '';
+    const url = info.url || '#';
+
+    return `
+        <a class="bookmaker-link" href="${url}" target="_blank" rel="noopener">
+            ${logo}
+            <span class="bookmaker-name">${name}</span>
+        </a>
+    `;
+}
+
+function outcomeBox(label, best) {
+    return `
+        <div class="best-box">
+            <div class="best-label">${label}</div>
+            <div class="best-odds">${best ? formatOdds(best.value) : '—'}</div>
+            <div class="best-bookmaker">${best ? best.bookmaker : 'No odds'}</div>
+        </div>
+    `;
+}
+
+function renderFixtures() {
+    const query = document.getElementById('search').value.trim().toLowerCase();
+    const container = document.getElementById('fixtures');
+
+    const events = allEvents.filter(game =>
+        game.home.toLowerCase().includes(query) ||
+        game.away.toLowerCase().includes(query) ||
+        prettyDate(game.commence_time).toLowerCase().includes(query)
+    );
+
+    if (!events.length) {
+        container.innerHTML = `<div class="empty">No matches found.</div>`;
+        return;
+    }
+
+    container.innerHTML = events.map((game, index) => {
+        const bestHome = bestFor(game, 'home');
+        const bestDraw = bestFor(game, 'draw');
+        const bestAway = bestFor(game, 'away');
+
+        const bookmakerRows = Object.keys(game.bookmakers)
+            .sort((a, b) => a.localeCompare(b))
+            .map(name => {
+                const p = game.bookmakers[name];
+                return `
+                    <div class="bookmaker-row">
+                        ${bookmakerCell(name)}
+                        <div class="price ${bestHome && p.home === bestHome.value ? 'best' : ''}">${formatOdds(p.home)}</div>
+                        <div class="price ${bestDraw && p.draw === bestDraw.value ? 'best' : ''}">${formatOdds(p.draw)}</div>
+                        <div class="price ${bestAway && p.away === bestAway.value ? 'best' : ''}">${formatOdds(p.away)}</div>
+                    </div>
+                `;
+            }).join('');
+
+        return `
+            <article class="fixture-card">
+                <div class="fixture-head">
+                    <div class="date">${prettyDate(game.commence_time)}</div>
+                    <div class="teams">
+                        <div class="team">${game.home}</div>
+                        <div class="vs">VS</div>
+                        <div class="team away">${game.away}</div>
+                    </div>
+                </div>
+
+                <div class="best-grid">
+                    ${outcomeBox(game.home, bestHome)}
+                    ${outcomeBox('Draw', bestDraw)}
+                    ${outcomeBox(game.away, bestAway)}
+                </div>
+
+                <button class="compare-btn" onclick="toggleComparison(${index}, this)">
+                    Compare all bookmakers ▼
+                </button>
+
+                <div id="compare-${index}" class="comparison">
+                    <div class="compare-header">
+                        <div>Bookmaker</div>
+                        <div>Home</div>
+                        <div>Draw</div>
+                        <div>Away</div>
+                    </div>
+                    ${bookmakerRows}
+                </div>
+            </article>
+        `;
+    }).join('');
+}
+
+function toggleComparison(index, button) {
+    const panel = document.getElementById(`compare-${index}`);
+    panel.classList.toggle('open');
+    button.textContent = panel.classList.contains('open')
+        ? 'Hide bookmaker comparison ▲'
+        : 'Compare all bookmakers ▼';
+}
+
+async function loadOdds() {
+    const container = document.getElementById('fixtures');
+
+    try {
+        const response = await fetch(API_URL);
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        allEvents = normalizeData(data);
+        renderFixtures();
+
+        document.getElementById('updated').textContent =
+            `Updated ${new Date().toLocaleTimeString('en-GB', {hour:'2-digit', minute:'2-digit'})}`;
+    } catch (error) {
+        console.error(error);
+        container.innerHTML = `
+            <div class="error">
+                Could not load the live odds.<br><br>
+                Make sure you have an internet connection and that the API allows requests from this page.
+            </div>
+        `;
+    }
+}
+
+document.getElementById('search').addEventListener('input', renderFixtures);
+document.getElementById('odds-format').addEventListener('change', renderFixtures);
+
+loadOdds();
+</script>
+</body>
+</html>
