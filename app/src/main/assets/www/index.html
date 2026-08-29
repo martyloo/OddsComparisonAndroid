@@ -1924,6 +1924,28 @@ function updateSportTabs() {
         (currentSport==='football'||currentSport==='cricket'||currentSport==='nba'||currentSport==='nfl'||currentSport==='baseball'||currentSport==='hockey')?'Search team...':'Search fighter...';
 }
 
+
+function closeSportDropdown(sportKey) {
+    const menus = {
+        football: ['football-menu', 'football-arrow'],
+        tennis: ['tennis-menu', 'tennis-arrow'],
+        golf: ['golf-menu', 'golf-arrow'],
+        cricket: ['cricket-menu', 'cricket-arrow'],
+        nba: ['nba-menu', 'nba-arrow'],
+        nfl: ['nfl-menu', 'nfl-arrow'],
+        hockey: ['hockey-menu', 'hockey-arrow']
+    };
+
+    const item = menus[sportKey];
+    if (!item) return;
+
+    const menu = document.getElementById(item[0]);
+    const arrow = document.getElementById(item[1]);
+
+    if (menu) menu.classList.remove('open');
+    if (arrow) arrow.textContent = '▼';
+}
+
 async function selectSport(sportKey) {
     const container=document.getElementById('fixtures');
     if(sportKey==='football'&&currentSport==='football'){const m=document.getElementById('football-menu');m.classList.toggle('open');document.getElementById('football-arrow').textContent=m.classList.contains('open')?'▲':'▼';return;}
@@ -2027,7 +2049,7 @@ function renderTennisTabs(){
 }
 
 async function switchTennis(key){
-    if(!TENNIS[key])return;currentSport='tennis';currentTennis=key;allEvents=[];document.getElementById('search').value='';document.getElementById('updated').textContent='';updateSportTabs();renderTennisTabs();const t=TENNIS[key];document.getElementById('league-heading').textContent=t.name;document.getElementById('fixtures').innerHTML=`<div class="loading">Loading ${t.name} odds...</div>`;const result=await fetchTennis(key);renderTennisTabs();if(!result.available){const next=Object.keys(TENNIS).find(k=>tennisCache[k]?.available);if(next&&next!==key)return switchTennis(next);allEvents=[];document.getElementById('fixtures').innerHTML='<div class="empty">No upcoming tennis matches available.</div>';return;}allEvents=futureOnly(result.games);renderFixtures();document.getElementById('updated').textContent=`Updated ${new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`;
+    if(!TENNIS[key])return;currentSport='tennis';currentTennis=key;allEvents=[];document.getElementById('search').value='';document.getElementById('updated').textContent='';updateSportTabs();closeSportDropdown('tennis');renderTennisTabs();const t=TENNIS[key];document.getElementById('league-heading').textContent=t.name;document.getElementById('fixtures').innerHTML=`<div class="loading">Loading ${t.name} odds...</div>`;const result=await fetchTennis(key);renderTennisTabs();if(!result.available){const next=Object.keys(TENNIS).find(k=>tennisCache[k]?.available);if(next&&next!==key)return switchTennis(next);allEvents=[];document.getElementById('fixtures').innerHTML='<div class="empty">No upcoming tennis matches available.</div>';return;}allEvents=futureOnly(result.games);renderFixtures();document.getElementById('updated').textContent=`Updated ${new Date().toLocaleTimeString('en-GB',{hour:'2-digit',minute:'2-digit'})}`;
 }
 
 
@@ -2155,6 +2177,7 @@ async function switchGolf(key) {
     document.getElementById('search').placeholder = 'Search golfer...';
     document.getElementById('updated').textContent = '';
     updateSportTabs();
+    closeSportDropdown('golf');
     renderGolfTabs();
 
     const tournament = GOLF[key];
@@ -2213,7 +2236,7 @@ async function switchCricket(key){
     currentSport='cricket';currentCricket=key;allEvents=[];
     document.getElementById('search').value='';
     document.getElementById('updated').textContent='';
-    updateSportTabs();renderCricketTabs();
+    updateSportTabs();closeSportDropdown('cricket');renderCricketTabs();
     const c=CRICKET[key];
     document.getElementById('league-heading').textContent=c.name;
     document.getElementById('fixtures').innerHTML=`<div class="loading">Loading ${c.name} odds...</div>`;
@@ -2284,6 +2307,7 @@ async function switchNBA(key) {
     document.getElementById('search').value = '';
     document.getElementById('updated').textContent = '';
     updateSportTabs();
+    closeSportDropdown('nba');
     renderNBATabs();
 
     const competition = NBA_COMPETITIONS[key];
@@ -2363,6 +2387,7 @@ async function switchNFL(key) {
     document.getElementById('search').value = '';
     document.getElementById('updated').textContent = '';
     updateSportTabs();
+    closeSportDropdown('nfl');
     renderNFLTabs();
 
     const competition = NFL_COMPETITIONS[key];
@@ -2468,6 +2493,7 @@ async function switchHockey(key) {
     document.getElementById('search').value = '';
     document.getElementById('updated').textContent = '';
     updateSportTabs();
+    closeSportDropdown('hockey');
     renderHockeyTabs();
 
     const competition = HOCKEY[key];
@@ -2902,6 +2928,7 @@ async function switchLeague(leagueKey) {
         document.getElementById('search').value = '';
         document.getElementById('updated').textContent = '';
         renderAccumulator();
+        closeSportDropdown('football');
         return;
     }
 
@@ -2917,6 +2944,7 @@ async function switchLeague(leagueKey) {
     updateSportTabs();
     renderLeagueTabs();
     await loadOdds(leagueKey);
+    closeSportDropdown('football');
 }
 
 async function initialiseApp(){
