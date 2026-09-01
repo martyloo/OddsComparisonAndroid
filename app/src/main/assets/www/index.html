@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Odds Comparison</title>
+<title>Odds Comparison - Mobile App Prototype</title>
 <style>
     * { box-sizing: border-box; }
     :root {
@@ -1244,6 +1244,186 @@
 }
 .team .tennis-player-photo-slot {
     flex:0 0 56px !important;
+}
+</style>
+
+
+<style id="mma-right-fighter-alignment-fix">
+/* Right-side MMA fighter: name and image stay together at the right edge */
+.team.away .mma-fighter-name {
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row-reverse !important;
+    gap:7px !important;
+    margin-left:auto !important;
+    text-align:right !important;
+    vertical-align:middle !important;
+}
+.team.away .mma-fighter-photo-slot {
+    flex:0 0 48px !important;
+    margin-left:7px !important;
+    margin-right:0 !important;
+}
+.team.away .mma-fighter-photo {
+    margin:0 !important;
+}
+</style>
+
+
+<style id="right-side-boxing-and-us-sports-fix">
+/* Boxing: keep the away fighter photo/name group together at the right edge */
+.team.away .boxing-fighter-name {
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row-reverse !important;
+    gap:7px !important;
+    margin-left:auto !important;
+    text-align:right !important;
+    vertical-align:middle !important;
+}
+.team.away .boxing-fighter-photo-slot {
+    flex:0 0 48px !important;
+    margin-left:7px !important;
+    margin-right:0 !important;
+}
+.team.away .boxing-fighter-photo {
+    margin:0 !important;
+}
+
+/* NBA: put the away-team logo on the far right, directly beside the team name */
+.team.away .nba-team-name {
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row-reverse !important;
+    gap:8px !important;
+    margin-left:auto !important;
+    text-align:right !important;
+}
+
+/* NFL, MLB/Baseball and NHL/Hockey use the shared sports-team-name wrapper */
+.team.away .sports-team-name {
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    flex-direction:row-reverse !important;
+    gap:8px !important;
+    margin-left:auto !important;
+    text-align:right !important;
+}
+
+.team.away .nba-team-logo,
+.team.away .sports-team-logo {
+    margin-left:0 !important;
+    margin-right:0 !important;
+}
+</style>
+
+
+<style id="equal-left-right-image-sizes">
+/* Force matching image/logo sizes on both sides of every matchup */
+
+/* MMA + Boxing: 48px on BOTH sides */
+.mma-fighter-photo,
+.mma-fighter-photo-slot,
+.boxing-fighter-photo,
+.boxing-fighter-photo-slot {
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+    max-width:48px !important;
+    max-height:48px !important;
+    flex:0 0 48px !important;
+    object-fit:cover !important;
+}
+
+/* Tennis remains larger: 56px on BOTH sides */
+.tennis-player-photo,
+.tennis-player-photo-slot {
+    width:56px !important;
+    height:56px !important;
+    min-width:56px !important;
+    min-height:56px !important;
+    max-width:56px !important;
+    max-height:56px !important;
+    flex:0 0 56px !important;
+    object-fit:cover !important;
+}
+
+/* NBA / NFL / MLB / NHL logos:
+   force away/right logos to inherit exactly the same dimensions as home/left.
+   Prevent flexbox from shrinking the right-hand logo on narrow screens. */
+.nba-team-logo,
+.sports-team-logo,
+.team-logo,
+.team .nba-team-logo,
+.team.away .nba-team-logo,
+.team .sports-team-logo,
+.team.away .sports-team-logo,
+.team .team-logo,
+.team.away .team-logo {
+    flex-shrink:0 !important;
+    transform:none !important;
+}
+
+/* Right-side wrappers must not squeeze their image/logo */
+.team.away .mma-fighter-photo-slot,
+.team.away .boxing-fighter-photo-slot,
+.team.away .tennis-player-photo-slot,
+.team.away .nba-team-logo,
+.team.away .sports-team-logo,
+.team.away .team-logo {
+    flex-shrink:0 !important;
+}
+</style>
+
+
+<style id="right-side-visual-size-match">
+/*
+ The right-side elements were still rendering visually smaller in the WebView
+ even though their CSS width/height matched the left side. Keep the layout box
+ identical, but enlarge the rendered artwork/headshot on the away side.
+*/
+.team.away .mma-fighter-photo,
+.team.away .boxing-fighter-photo,
+.team.away .nba-team-logo,
+.team.away .sports-team-logo,
+.team.away .team-logo {
+    transform: scale(1.15) !important;
+    transform-origin: center center !important;
+}
+
+/* Keep their layout boxes fixed so alignment/spacing stays unchanged. */
+.team.away .mma-fighter-photo,
+.team.away .boxing-fighter-photo {
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    min-height:48px !important;
+    max-width:48px !important;
+    max-height:48px !important;
+}
+
+.team.away .nba-team-logo,
+.team.away .sports-team-logo {
+    width:32px !important;
+    height:32px !important;
+    min-width:32px !important;
+    min-height:32px !important;
+    max-width:32px !important;
+    max-height:32px !important;
+    flex:0 0 32px !important;
 }
 </style>
 
@@ -4670,7 +4850,153 @@ document.getElementById('odds-format').addEventListener('change', () => {
     else renderFixtures();
 });
 
-initialiseApp();
+
+/* ===== Near real-time odds refresh =====
+   Re-checks the currently visible market every 5 seconds.
+   No loading screen is shown, so the odds simply change in place.
+*/
+const LIVE_ODDS_REFRESH_MS = 5000;
+let liveOddsRefreshBusy = false;
+let liveOddsRefreshTimer = null;
+
+function markLiveOddsUpdated() {
+    const el = document.getElementById('updated');
+    if (!el) return;
+    el.textContent =
+        `Live • ${new Date().toLocaleTimeString('en-GB', {
+            hour:'2-digit',
+            minute:'2-digit',
+            second:'2-digit'
+        })}`;
+}
+
+async function refreshCurrentOddsSilently() {
+    if (liveOddsRefreshBusy || document.hidden) return;
+    liveOddsRefreshBusy = true;
+
+    try {
+        if (currentSport === 'football') {
+            if (currentLeague === 'accumulator') {
+                await Promise.all(
+                    Object.keys(LEAGUES).map(key => fetchLeague(key))
+                );
+                renderLeagueTabs();
+                renderAccumulator();
+                markLiveOddsUpdated();
+                return;
+            }
+
+            if (currentLeague && LEAGUES[currentLeague]) {
+                const result = await fetchLeague(currentLeague);
+                if (result && result.available) {
+                    allEvents = futureOnly(result.games);
+                    renderFixtures();
+                    markLiveOddsUpdated();
+                }
+                return;
+            }
+        }
+
+        if (currentSport === 'mma' || currentSport === 'boxing') {
+            const result = await fetchCombatSport(currentSport);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'tennis' && currentTennis) {
+            const result = await fetchTennis(currentTennis);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'golf' && currentGolf) {
+            const result = await fetchGolf(currentGolf);
+            if (result && result.available) {
+                golfOddsData = result.rows;
+                renderGolfOdds();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'cricket' && currentCricket) {
+            const result = await fetchCricket(currentCricket);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'nba' && currentNBA) {
+            const result = await fetchNBACompetition(currentNBA);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'nfl' && currentNFL) {
+            const result = await fetchNFLCompetition(currentNFL);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'baseball') {
+            const result = await fetchBaseball();
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+            return;
+        }
+
+        if (currentSport === 'hockey' && currentHockey) {
+            const result = await fetchHockey(currentHockey);
+            if (result && result.available) {
+                allEvents = futureOnly(result.games);
+                renderFixtures();
+                markLiveOddsUpdated();
+            }
+        }
+    } catch (error) {
+        console.warn('Live odds refresh failed:', error);
+    } finally {
+        liveOddsRefreshBusy = false;
+    }
+}
+
+function startLiveOddsRefresh() {
+    if (liveOddsRefreshTimer) clearInterval(liveOddsRefreshTimer);
+
+    liveOddsRefreshTimer = setInterval(
+        refreshCurrentOddsSilently,
+        LIVE_ODDS_REFRESH_MS
+    );
+
+    /* Refresh immediately when the user returns to the app/tab. */
+    document.addEventListener('visibilitychange', () => {
+        if (!document.hidden) refreshCurrentOddsSilently();
+    });
+}
+
+initialiseApp().then(startLiveOddsRefresh);
 
 
 
