@@ -967,7 +967,286 @@
         }
     }
 
+
+    /* Hide the entire blue header while scrolling down, reveal it on upward scroll. */
+    .header-scroll-hidden {
+        transform: translateY(-105%);
+    }
+
+    .topbar {
+        transition: transform .22s ease;
+        will-change: transform;
+    }
+
+
+    /* UFC fighter headshots in the MMA tab */
+    .mma-fighter-name {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        min-width: 0;
+    }
+
+    .mma-fighter-photo {
+        width: 38px;
+        height: 38px;
+        border-radius: 50%;
+        object-fit: cover;
+        object-position: center top;
+        background: #eef1f5;
+        flex: 0 0 38px;
+    }
+
+    .mma-fighter-photo-slot:empty {
+        display: none;
+    }
+
+
+/* Boxing fighter thumbnails: deliberately tiny, like a team badge */
+.boxing-fighter-name {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:5px !important;
+}
+.boxing-fighter-photo-slot {
+    display:inline-flex !important;
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    max-width:18px !important;
+    min-height:18px !important;
+    max-height:18px !important;
+    flex:0 0 18px !important;
+    overflow:hidden !important;
+    border-radius:50% !important;
+    vertical-align:middle !important;
+}
+.boxing-fighter-photo-slot:empty {
+    display:none !important;
+}
+.boxing-fighter-photo {
+    display:block !important;
+    width:18px !important;
+    height:18px !important;
+    min-width:18px !important;
+    max-width:18px !important;
+    min-height:18px !important;
+    max-height:18px !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    border-radius:50% !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+
+/* Boxing images: exactly the same displayed size as MMA */
+.boxing-fighter-name {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    min-width:0 !important;
+}
+.boxing-fighter-photo-slot {
+    display:inline-flex !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    flex:0 0 38px !important;
+    overflow:hidden !important;
+    border-radius:50% !important;
+}
+.boxing-fighter-photo-slot:empty {
+    display:none !important;
+}
+.boxing-fighter-photo {
+    display:block !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    border-radius:50% !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+
+/* Tennis player photos: exactly the same displayed size as MMA */
+.tennis-player-name {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+    min-width:0 !important;
+}
+.tennis-player-photo-slot {
+    display:inline-flex !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    flex:0 0 38px !important;
+    overflow:hidden !important;
+    border-radius:50% !important;
+}
+.tennis-player-photo-slot:empty {
+    display:none !important;
+}
+.tennis-player-photo {
+    display:block !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    border-radius:50% !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+
+/* Golf player photos: same compact 38px style as MMA/Tennis/Boxing */
+.golfer-name-with-photo {
+    display:inline-flex !important;
+    align-items:center !important;
+    gap:8px !important;
+    min-width:0 !important;
+}
+.golfer-photo-slot {
+    display:inline-flex !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    flex:0 0 38px !important;
+    overflow:hidden !important;
+    border-radius:50% !important;
+}
+.golfer-photo-slot:empty {
+    display:none !important;
+}
+.golfer-photo {
+    display:block !important;
+    width:38px !important;
+    height:38px !important;
+    min-width:38px !important;
+    max-width:38px !important;
+    min-height:38px !important;
+    max-height:38px !important;
+    object-fit:cover !important;
+    object-position:center top !important;
+    border-radius:50% !important;
+    margin:0 !important;
+    padding:0 !important;
+}
+
+
+.nba-team-name {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+}
+.nba-team-logo {
+    width:32px !important;
+    height:32px !important;
+    max-width:32px !important;
+    max-height:32px !important;
+    object-fit:contain !important;
+    flex:0 0 32px !important;
+}
+
+
+.sports-team-name {
+    display:inline-flex !important;
+    align-items:center !important;
+    justify-content:center !important;
+    gap:8px !important;
+}
+.sports-team-logo {
+    width:32px !important;
+    height:32px !important;
+    max-width:32px !important;
+    max-height:32px !important;
+    object-fit:contain !important;
+    flex:0 0 32px !important;
+}
+
 </style>
+
+<style id="larger-athlete-images">
+/* Larger athlete images: 48px */
+.mma-fighter-photo,
+.mma-fighter-photo-slot,
+.boxing-fighter-photo,
+.boxing-fighter-photo-slot,
+.tennis-player-photo,
+.tennis-player-photo-slot,
+.golfer-photo,
+.golfer-photo-slot {
+    width:48px !important;
+    height:48px !important;
+    min-width:48px !important;
+    max-width:48px !important;
+    min-height:48px !important;
+    max-height:48px !important;
+    flex:0 0 48px !important;
+}
+</style>
+
+
+<style id="larger-tennis-images">
+/* Tennis photos slightly larger than other athlete photos */
+.tennis-player-photo,
+.tennis-player-photo-slot {
+    width:56px !important;
+    height:56px !important;
+    min-width:56px !important;
+    max-width:56px !important;
+    min-height:56px !important;
+    max-height:56px !important;
+    flex:0 0 56px !important;
+}
+</style>
+
+
+<style id="tennis-image-name-alignment-fix">
+/* Keep each tennis photo attached directly to its player's name on small screens */
+.team .tennis-player-name {
+    display:inline-flex !important;
+    width:auto !important;
+    max-width:100% !important;
+    align-items:center !important;
+    justify-content:flex-start !important;
+    gap:7px !important;
+    vertical-align:middle !important;
+}
+.team.away .tennis-player-name {
+    flex-direction:row-reverse !important;
+    justify-content:flex-start !important;
+}
+.team .tennis-player-photo-slot {
+    flex:0 0 56px !important;
+}
+</style>
+
 </head>
 <body>
 <div class="app-shell">
@@ -1241,6 +1520,128 @@ let golfOddsData = [];
 const leagueCache = {};
 const tennisCache = {};
 const golfCache = {};
+
+/* Permanent athlete image cache generated by the PythonAnywhere updater. */
+const ATHLETE_IMAGE_ORIGIN = 'https://martynardelli.pythonanywhere.com';
+const ATHLETE_IMAGE_MANIFEST_URL =
+    `${ATHLETE_IMAGE_ORIGIN}/static/athlete_images.json`;
+
+let ATHLETE_IMAGE_MAP = {
+    mma: {},
+    boxing: {},
+    tennis: {},
+    golf: {}
+};
+
+/* Changes whenever athlete_images.json is successfully reloaded.
+   Appending it to saved image URLs prevents Android WebView from showing an
+   older cached WebP after the server-side downloader replaces that file. */
+let ATHLETE_IMAGE_CACHE_VERSION = Date.now();
+
+const ATHLETE_IMAGE_NORMALIZED = {
+    mma: new Map(),
+    boxing: new Map(),
+    tennis: new Map(),
+    golf: new Map()
+};
+
+function normalizeAthleteManifestName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/["'’.,]/g, '')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function absoluteAthleteImageUrl(value) {
+    const url = String(value || '').trim();
+    if (!url) return null;
+
+    let absolute;
+    if (/^https?:\/\//i.test(url)) {
+        absolute = url;
+    } else if (url.startsWith('/')) {
+        absolute = ATHLETE_IMAGE_ORIGIN + url;
+    } else {
+        absolute = `${ATHLETE_IMAGE_ORIGIN}/${url}`;
+    }
+
+    // Bust WebView/browser cache for our replaceable locally hosted athlete
+    // WebPs. This is especially important after removing a wrong Boxing image.
+    if (
+        absolute.startsWith(ATHLETE_IMAGE_ORIGIN) &&
+        absolute.includes('/static/athletes/')
+    ) {
+        const separator = absolute.includes('?') ? '&' : '?';
+        absolute += `${separator}v=${ATHLETE_IMAGE_CACHE_VERSION}`;
+    }
+
+    return absolute;
+}
+
+function rebuildAthleteImageLookup() {
+    for (const sport of ['mma','boxing','tennis','golf']) {
+        ATHLETE_IMAGE_NORMALIZED[sport].clear();
+        const entries = ATHLETE_IMAGE_MAP?.[sport] || {};
+
+        Object.entries(entries).forEach(([name, value]) => {
+            const key = normalizeAthleteManifestName(name);
+            if (!key) return;
+
+            let path = value;
+            if (value && typeof value === 'object') {
+                path = value.local || value.url || value.image || '';
+            }
+
+            const absolute = absoluteAthleteImageUrl(path);
+            if (absolute) ATHLETE_IMAGE_NORMALIZED[sport].set(key, absolute);
+        });
+    }
+}
+
+function athleteImageUrl(sport, name) {
+    const key = normalizeAthleteManifestName(name);
+    if (!key) return null;
+    return ATHLETE_IMAGE_NORMALIZED?.[sport]?.get(key) || null;
+}
+
+async function loadAthleteImageMap() {
+    try {
+        const response = await fetch(
+            ATHLETE_IMAGE_MANIFEST_URL,
+            { cache: 'no-cache' }
+        );
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
+        const data = await response.json();
+        if (!data || typeof data !== 'object') throw new Error('Invalid manifest');
+
+        ATHLETE_IMAGE_MAP = {
+            mma: data.mma || {},
+            boxing: data.boxing || {},
+            tennis: data.tennis || {},
+            golf: data.golf || {}
+        };
+
+        ATHLETE_IMAGE_CACHE_VERSION = Date.now();
+        rebuildAthleteImageLookup();
+        console.log(
+            'Athlete image manifest loaded',
+            Object.fromEntries(
+                Object.entries(ATHLETE_IMAGE_MAP)
+                    .map(([sport, values]) => [sport, Object.keys(values || {}).length])
+            )
+        );
+    } catch (error) {
+        console.warn(
+            'Permanent athlete image manifest unavailable; online fallbacks remain enabled.',
+            error
+        );
+    }
+}
 const cricketCache = {};
 const nbaCache = {};
 const nflCache = {};
@@ -1475,6 +1876,1232 @@ const FOOTBALL_LEAGUE_COUNTRY = {
 let FOOTBALL_LOGO_DATA = null;
 let FOOTBALL_LOGO_DATA_PROMISE = null;
 const FOOTBALL_RESOLVED_CACHE = {};
+
+
+
+
+
+const NBA_TEAM_LOGOS = {
+    'atlanta hawks': 'https://a.espncdn.com/i/teamlogos/nba/500/atl.png',
+    'boston celtics': 'https://a.espncdn.com/i/teamlogos/nba/500/bos.png',
+    'brooklyn nets': 'https://a.espncdn.com/i/teamlogos/nba/500/bkn.png',
+    'charlotte hornets': 'https://a.espncdn.com/i/teamlogos/nba/500/cha.png',
+    'chicago bulls': 'https://a.espncdn.com/i/teamlogos/nba/500/chi.png',
+    'cleveland cavaliers': 'https://a.espncdn.com/i/teamlogos/nba/500/cle.png',
+    'dallas mavericks': 'https://a.espncdn.com/i/teamlogos/nba/500/dal.png',
+    'denver nuggets': 'https://a.espncdn.com/i/teamlogos/nba/500/den.png',
+    'detroit pistons': 'https://a.espncdn.com/i/teamlogos/nba/500/det.png',
+    'golden state warriors': 'https://a.espncdn.com/i/teamlogos/nba/500/gs.png',
+    'houston rockets': 'https://a.espncdn.com/i/teamlogos/nba/500/hou.png',
+    'indiana pacers': 'https://a.espncdn.com/i/teamlogos/nba/500/ind.png',
+    'los angeles clippers': 'https://a.espncdn.com/i/teamlogos/nba/500/lac.png',
+    'los angeles lakers': 'https://a.espncdn.com/i/teamlogos/nba/500/lal.png',
+    'memphis grizzlies': 'https://a.espncdn.com/i/teamlogos/nba/500/mem.png',
+    'miami heat': 'https://a.espncdn.com/i/teamlogos/nba/500/mia.png',
+    'milwaukee bucks': 'https://a.espncdn.com/i/teamlogos/nba/500/mil.png',
+    'minnesota timberwolves': 'https://a.espncdn.com/i/teamlogos/nba/500/min.png',
+    'new orleans pelicans': 'https://a.espncdn.com/i/teamlogos/nba/500/no.png',
+    'new york knicks': 'https://a.espncdn.com/i/teamlogos/nba/500/ny.png',
+    'oklahoma city thunder': 'https://a.espncdn.com/i/teamlogos/nba/500/okc.png',
+    'orlando magic': 'https://a.espncdn.com/i/teamlogos/nba/500/orl.png',
+    'philadelphia 76ers': 'https://a.espncdn.com/i/teamlogos/nba/500/phi.png',
+    'phoenix suns': 'https://a.espncdn.com/i/teamlogos/nba/500/phx.png',
+    'portland trail blazers': 'https://a.espncdn.com/i/teamlogos/nba/500/por.png',
+    'sacramento kings': 'https://a.espncdn.com/i/teamlogos/nba/500/sac.png',
+    'san antonio spurs': 'https://a.espncdn.com/i/teamlogos/nba/500/sa.png',
+    'toronto raptors': 'https://a.espncdn.com/i/teamlogos/nba/500/tor.png',
+    'utah jazz': 'https://a.espncdn.com/i/teamlogos/nba/500/utah.png',
+    'washington wizards': 'https://a.espncdn.com/i/teamlogos/nba/500/wsh.png'
+};
+
+const NBA_TEAM_NAME_ALIASES = {
+    'la clippers': 'los angeles clippers',
+    'la lakers': 'los angeles lakers',
+    'ny knicks': 'new york knicks',
+    'okc thunder': 'oklahoma city thunder',
+    'golden state': 'golden state warriors',
+    'philadelphia sixers': 'philadelphia 76ers',
+    'portland trailblazers': 'portland trail blazers',
+    'new orleans': 'new orleans pelicans'
+};
+
+function cleanNbaTeamName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/&/g, 'and')
+        .replace(/[^a-z0-9]+/g, ' ')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function canonicalNbaTeamName(value) {
+    const key = cleanNbaTeamName(value);
+    return NBA_TEAM_NAME_ALIASES[key] || key;
+}
+
+function nbaTeamNameWithLogo(name) {
+    const key = canonicalNbaTeamName(name);
+    const logo = NBA_TEAM_LOGOS[key];
+
+    if (!logo) {
+        return `<span>${escapeHtml(name)}</span>`;
+    }
+
+    return `<span class="nba-team-name">
+        <img class="nba-team-logo"
+             src="${logo}"
+             alt=""
+             aria-hidden="true"
+             referrerpolicy="no-referrer"
+             onerror="this.remove()">
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+/* Fixed direct team-logo maps: reliable in Android WebView. */
+const WNBA_TEAM_LOGOS = {
+    'atlanta dream':'https://a.espncdn.com/i/teamlogos/wnba/500/atl.png',
+    'chicago sky':'https://a.espncdn.com/i/teamlogos/wnba/500/chi.png',
+    'connecticut sun':'https://a.espncdn.com/i/teamlogos/wnba/500/con.png',
+    'dallas wings':'https://a.espncdn.com/i/teamlogos/wnba/500/dal.png',
+    'golden state valkyries':'https://a.espncdn.com/i/teamlogos/wnba/500/gs.png',
+    'indiana fever':'https://a.espncdn.com/i/teamlogos/wnba/500/ind.png',
+    'las vegas aces':'https://a.espncdn.com/i/teamlogos/wnba/500/lv.png',
+    'los angeles sparks':'https://a.espncdn.com/i/teamlogos/wnba/500/la.png',
+    'minnesota lynx':'https://a.espncdn.com/i/teamlogos/wnba/500/min.png',
+    'new york liberty':'https://a.espncdn.com/i/teamlogos/wnba/500/ny.png',
+    'phoenix mercury':'https://a.espncdn.com/i/teamlogos/wnba/500/phx.png',
+    'portland fire':'https://a.espncdn.com/i/teamlogos/wnba/500/por.png',
+    'seattle storm':'https://a.espncdn.com/i/teamlogos/wnba/500/sea.png',
+    'toronto tempo':'https://a.espncdn.com/i/teamlogos/wnba/500/tor.png',
+    'washington mystics':'https://a.espncdn.com/i/teamlogos/wnba/500/wsh.png'
+};
+
+const NFL_TEAM_LOGOS = {
+    'arizona cardinals':'https://a.espncdn.com/i/teamlogos/nfl/500/ari.png',
+    'atlanta falcons':'https://a.espncdn.com/i/teamlogos/nfl/500/atl.png',
+    'baltimore ravens':'https://a.espncdn.com/i/teamlogos/nfl/500/bal.png',
+    'buffalo bills':'https://a.espncdn.com/i/teamlogos/nfl/500/buf.png',
+    'carolina panthers':'https://a.espncdn.com/i/teamlogos/nfl/500/car.png',
+    'chicago bears':'https://a.espncdn.com/i/teamlogos/nfl/500/chi.png',
+    'cincinnati bengals':'https://a.espncdn.com/i/teamlogos/nfl/500/cin.png',
+    'cleveland browns':'https://a.espncdn.com/i/teamlogos/nfl/500/cle.png',
+    'dallas cowboys':'https://a.espncdn.com/i/teamlogos/nfl/500/dal.png',
+    'denver broncos':'https://a.espncdn.com/i/teamlogos/nfl/500/den.png',
+    'detroit lions':'https://a.espncdn.com/i/teamlogos/nfl/500/det.png',
+    'green bay packers':'https://a.espncdn.com/i/teamlogos/nfl/500/gb.png',
+    'houston texans':'https://a.espncdn.com/i/teamlogos/nfl/500/hou.png',
+    'indianapolis colts':'https://a.espncdn.com/i/teamlogos/nfl/500/ind.png',
+    'jacksonville jaguars':'https://a.espncdn.com/i/teamlogos/nfl/500/jax.png',
+    'kansas city chiefs':'https://a.espncdn.com/i/teamlogos/nfl/500/kc.png',
+    'las vegas raiders':'https://a.espncdn.com/i/teamlogos/nfl/500/lv.png',
+    'los angeles chargers':'https://a.espncdn.com/i/teamlogos/nfl/500/lac.png',
+    'los angeles rams':'https://a.espncdn.com/i/teamlogos/nfl/500/lar.png',
+    'miami dolphins':'https://a.espncdn.com/i/teamlogos/nfl/500/mia.png',
+    'minnesota vikings':'https://a.espncdn.com/i/teamlogos/nfl/500/min.png',
+    'new england patriots':'https://a.espncdn.com/i/teamlogos/nfl/500/ne.png',
+    'new orleans saints':'https://a.espncdn.com/i/teamlogos/nfl/500/no.png',
+    'new york giants':'https://a.espncdn.com/i/teamlogos/nfl/500/nyg.png',
+    'new york jets':'https://a.espncdn.com/i/teamlogos/nfl/500/nyj.png',
+    'philadelphia eagles':'https://a.espncdn.com/i/teamlogos/nfl/500/phi.png',
+    'pittsburgh steelers':'https://a.espncdn.com/i/teamlogos/nfl/500/pit.png',
+    'san francisco 49ers':'https://a.espncdn.com/i/teamlogos/nfl/500/sf.png',
+    'seattle seahawks':'https://a.espncdn.com/i/teamlogos/nfl/500/sea.png',
+    'tampa bay buccaneers':'https://a.espncdn.com/i/teamlogos/nfl/500/tb.png',
+    'tennessee titans':'https://a.espncdn.com/i/teamlogos/nfl/500/ten.png',
+    'washington commanders':'https://a.espncdn.com/i/teamlogos/nfl/500/wsh.png'
+};
+
+const CFL_TEAM_LOGOS = {
+    'bc lions':'https://a.espncdn.com/i/teamlogos/cfl/500/bc.png',
+    'calgary stampeders':'https://a.espncdn.com/i/teamlogos/cfl/500/cgy.png',
+    'edmonton elks':'https://a.espncdn.com/i/teamlogos/cfl/500/edm.png',
+    'hamilton tiger cats':'https://a.espncdn.com/i/teamlogos/cfl/500/ham.png',
+    'montreal alouettes':'https://a.espncdn.com/i/teamlogos/cfl/500/mtl.png',
+    'ottawa redblacks':'https://a.espncdn.com/i/teamlogos/cfl/500/ott.png',
+    'saskatchewan roughriders':'https://a.espncdn.com/i/teamlogos/cfl/500/ssk.png',
+    'toronto argonauts':'https://a.espncdn.com/i/teamlogos/cfl/500/tor.png',
+    'winnipeg blue bombers':'https://a.espncdn.com/i/teamlogos/cfl/500/wpg.png'
+};
+
+const MLB_TEAM_LOGOS = {
+    'arizona diamondbacks':'https://a.espncdn.com/i/teamlogos/mlb/500/ari.png',
+    'atlanta braves':'https://a.espncdn.com/i/teamlogos/mlb/500/atl.png',
+    'baltimore orioles':'https://a.espncdn.com/i/teamlogos/mlb/500/bal.png',
+    'boston red sox':'https://a.espncdn.com/i/teamlogos/mlb/500/bos.png',
+    'chicago cubs':'https://a.espncdn.com/i/teamlogos/mlb/500/chc.png',
+    'chicago white sox':'https://a.espncdn.com/i/teamlogos/mlb/500/chw.png',
+    'cincinnati reds':'https://a.espncdn.com/i/teamlogos/mlb/500/cin.png',
+    'cleveland guardians':'https://a.espncdn.com/i/teamlogos/mlb/500/cle.png',
+    'colorado rockies':'https://a.espncdn.com/i/teamlogos/mlb/500/col.png',
+    'detroit tigers':'https://a.espncdn.com/i/teamlogos/mlb/500/det.png',
+    'houston astros':'https://a.espncdn.com/i/teamlogos/mlb/500/hou.png',
+    'kansas city royals':'https://a.espncdn.com/i/teamlogos/mlb/500/kc.png',
+    'los angeles angels':'https://a.espncdn.com/i/teamlogos/mlb/500/laa.png',
+    'los angeles dodgers':'https://a.espncdn.com/i/teamlogos/mlb/500/lad.png',
+    'miami marlins':'https://a.espncdn.com/i/teamlogos/mlb/500/mia.png',
+    'milwaukee brewers':'https://a.espncdn.com/i/teamlogos/mlb/500/mil.png',
+    'minnesota twins':'https://a.espncdn.com/i/teamlogos/mlb/500/min.png',
+    'new york mets':'https://a.espncdn.com/i/teamlogos/mlb/500/nym.png',
+    'new york yankees':'https://a.espncdn.com/i/teamlogos/mlb/500/nyy.png',
+    'athletics':'https://a.espncdn.com/i/teamlogos/mlb/500/ath.png',
+    'oakland athletics':'https://a.espncdn.com/i/teamlogos/mlb/500/ath.png',
+    'philadelphia phillies':'https://a.espncdn.com/i/teamlogos/mlb/500/phi.png',
+    'pittsburgh pirates':'https://a.espncdn.com/i/teamlogos/mlb/500/pit.png',
+    'san diego padres':'https://a.espncdn.com/i/teamlogos/mlb/500/sd.png',
+    'san francisco giants':'https://a.espncdn.com/i/teamlogos/mlb/500/sf.png',
+    'seattle mariners':'https://a.espncdn.com/i/teamlogos/mlb/500/sea.png',
+    'st louis cardinals':'https://a.espncdn.com/i/teamlogos/mlb/500/stl.png',
+    'tampa bay rays':'https://a.espncdn.com/i/teamlogos/mlb/500/tb.png',
+    'texas rangers':'https://a.espncdn.com/i/teamlogos/mlb/500/tex.png',
+    'toronto blue jays':'https://a.espncdn.com/i/teamlogos/mlb/500/tor.png',
+    'washington nationals':'https://a.espncdn.com/i/teamlogos/mlb/500/wsh.png'
+};
+
+const NHL_TEAM_LOGOS = {
+    'anaheim ducks':'https://a.espncdn.com/i/teamlogos/nhl/500/ana.png',
+    'boston bruins':'https://a.espncdn.com/i/teamlogos/nhl/500/bos.png',
+    'buffalo sabres':'https://a.espncdn.com/i/teamlogos/nhl/500/buf.png',
+    'calgary flames':'https://a.espncdn.com/i/teamlogos/nhl/500/cgy.png',
+    'carolina hurricanes':'https://a.espncdn.com/i/teamlogos/nhl/500/car.png',
+    'chicago blackhawks':'https://a.espncdn.com/i/teamlogos/nhl/500/chi.png',
+    'colorado avalanche':'https://a.espncdn.com/i/teamlogos/nhl/500/col.png',
+    'columbus blue jackets':'https://a.espncdn.com/i/teamlogos/nhl/500/cbj.png',
+    'dallas stars':'https://a.espncdn.com/i/teamlogos/nhl/500/dal.png',
+    'detroit red wings':'https://a.espncdn.com/i/teamlogos/nhl/500/det.png',
+    'edmonton oilers':'https://a.espncdn.com/i/teamlogos/nhl/500/edm.png',
+    'florida panthers':'https://a.espncdn.com/i/teamlogos/nhl/500/fla.png',
+    'los angeles kings':'https://a.espncdn.com/i/teamlogos/nhl/500/la.png',
+    'minnesota wild':'https://a.espncdn.com/i/teamlogos/nhl/500/min.png',
+    'montreal canadiens':'https://a.espncdn.com/i/teamlogos/nhl/500/mtl.png',
+    'nashville predators':'https://a.espncdn.com/i/teamlogos/nhl/500/nsh.png',
+    'new jersey devils':'https://a.espncdn.com/i/teamlogos/nhl/500/nj.png',
+    'new york islanders':'https://a.espncdn.com/i/teamlogos/nhl/500/nyi.png',
+    'new york rangers':'https://a.espncdn.com/i/teamlogos/nhl/500/nyr.png',
+    'ottawa senators':'https://a.espncdn.com/i/teamlogos/nhl/500/ott.png',
+    'philadelphia flyers':'https://a.espncdn.com/i/teamlogos/nhl/500/phi.png',
+    'pittsburgh penguins':'https://a.espncdn.com/i/teamlogos/nhl/500/pit.png',
+    'san jose sharks':'https://a.espncdn.com/i/teamlogos/nhl/500/sj.png',
+    'seattle kraken':'https://a.espncdn.com/i/teamlogos/nhl/500/sea.png',
+    'st louis blues':'https://a.espncdn.com/i/teamlogos/nhl/500/stl.png',
+    'tampa bay lightning':'https://a.espncdn.com/i/teamlogos/nhl/500/tb.png',
+    'toronto maple leafs':'https://a.espncdn.com/i/teamlogos/nhl/500/tor.png',
+    'utah mammoth':'https://a.espncdn.com/i/teamlogos/nhl/500/utah.png',
+    'utah hockey club':'https://a.espncdn.com/i/teamlogos/nhl/500/utah.png',
+    'vancouver canucks':'https://a.espncdn.com/i/teamlogos/nhl/500/van.png',
+    'vegas golden knights':'https://a.espncdn.com/i/teamlogos/nhl/500/vgk.png',
+    'washington capitals':'https://a.espncdn.com/i/teamlogos/nhl/500/wsh.png',
+    'winnipeg jets':'https://a.espncdn.com/i/teamlogos/nhl/500/wpg.png'
+};
+
+function cleanSportsTeamName(value) {
+    return String(value || '')
+        .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+        .toLowerCase()
+        .replace(/&/g,'and')
+        .replace(/[^a-z0-9]+/g,' ')
+        .replace(/\s+/g,' ')
+        .trim();
+}
+
+const SPORTS_TEAM_ALIASES = {
+    'hamilton tiger-cats':'hamilton tiger cats',
+    'montreal alouettes':'montreal alouettes',
+    'st. louis cardinals':'st louis cardinals',
+    'st. louis blues':'st louis blues',
+    'la angels':'los angeles angels',
+    'ny yankees':'new york yankees',
+    'ny mets':'new york mets',
+    'sf giants':'san francisco giants',
+    'kc royals':'kansas city royals',
+    'tampa rays':'tampa bay rays',
+    'washington football team':'washington commanders',
+    'oakland a s':'athletics',
+    'oakland as':'athletics'
+};
+
+function canonicalSportsTeamName(value) {
+    const key = cleanSportsTeamName(value);
+    return SPORTS_TEAM_ALIASES[key] || key;
+}
+
+function sportsTeamWithLogo(name, map) {
+    const key = canonicalSportsTeamName(name);
+    const logo = map[key];
+
+    if (!logo) return `<span>${escapeHtml(name)}</span>`;
+
+    return `<span class="sports-team-name">
+        <img class="sports-team-logo" src="${logo}" alt="" aria-hidden="true"
+             referrerpolicy="no-referrer" onerror="this.remove()">
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+
+function renderNorthAmericanTeam(name) {
+    if (currentSport === 'nba') {
+        // This app stores NBA/WNBA/EuroLeague selection in currentNBA.
+        if (currentNBA === 'wnba') {
+            return sportsTeamWithLogo(name, WNBA_TEAM_LOGOS);
+        }
+        if (currentNBA === 'nba') {
+            return nbaTeamNameWithLogo(name);
+        }
+        // EuroLeague: do not incorrectly show NBA/WNBA badges.
+        return `<span>${escapeHtml(name)}</span>`;
+    }
+
+    if (currentSport === 'nfl') {
+        // This app stores NFL/CFL/NCAAF/UFL selection in currentNFL.
+        if (currentNFL === 'nfl') {
+            return sportsTeamWithLogo(name, NFL_TEAM_LOGOS);
+        }
+        if (currentNFL === 'cfl') {
+            return sportsTeamWithLogo(name, CFL_TEAM_LOGOS);
+        }
+        // NCAAF / UFL remain plain text for now.
+        return `<span>${escapeHtml(name)}</span>`;
+    }
+
+    if (currentSport === 'baseball') {
+        return sportsTeamWithLogo(name, MLB_TEAM_LOGOS);
+    }
+
+    if (currentSport === 'hockey') {
+        // NHL names match this map. Swedish leagues naturally remain text-only.
+        const key = canonicalSportsTeamName(name);
+        if (NHL_TEAM_LOGOS[key]) {
+            return sportsTeamWithLogo(name, NHL_TEAM_LOGOS);
+        }
+        return `<span>${escapeHtml(name)}</span>`;
+    }
+
+    return teamNameWithLogo(name);
+}
+
+const TENNIS_EXPLORER_IMAGE_CACHE = {};
+const TENNIS_EXPLORER_PENDING = {};
+
+function cleanTennisName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[’']/g, '')
+        .replace(/\./g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function tennisTokens(value) {
+    return cleanTennisName(value)
+        .replace(/,/g, ' ')
+        .replace(/[^a-z0-9\s-]/g, ' ')
+        .split(/\s+/)
+        .filter(Boolean);
+}
+
+function tennisNamesMatch(siteName, apiName) {
+    const a = tennisTokens(siteName);
+    const b = tennisTokens(apiName);
+
+    if (!a.length || !b.length) return false;
+
+    // Same words regardless of order:
+    // "Djokovic, Novak" == "Novak Djokovic"
+    if (a.length === b.length) {
+        const sa = [...a].sort().join('|');
+        const sb = [...b].sort().join('|');
+        if (sa === sb) return true;
+    }
+
+    // Allow common middle-name / initial differences while still requiring
+    // both the API first and surname tokens to be present.
+    const aset = new Set(a);
+    const bset = new Set(b);
+    let common = 0;
+    bset.forEach(token => {
+        if (aset.has(token)) common += 1;
+    });
+
+    return common >= 2 && common >= Math.min(2, bset.size);
+}
+
+function tennisMatchScore(siteName, apiName) {
+    if (tennisNamesMatch(siteName, apiName)) {
+        const a = tennisTokens(siteName);
+        const b = tennisTokens(apiName);
+        return a.length === b.length ? 200 : 150;
+    }
+
+    const a = tennisTokens(siteName);
+    const b = tennisTokens(apiName);
+    if (!a.length || !b.length) return 0;
+
+    let common = 0;
+    const aset = new Set(a);
+    b.forEach(token => {
+        if (aset.has(token)) common++;
+    });
+
+    return common >= 2 ? 80 + common * 10 : 0;
+}
+
+function tennisPlayerNameWithPhoto(name) {
+    const key = cleanTennisName(name);
+    return `<span class="tennis-player-name">
+        <span class="tennis-player-photo-slot" data-tennis-player-photo="${escapeHtml(key)}"></span>
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+async function fetchTennisExplorerText(url) {
+    const stripped = String(url)
+        .replace(/^https?:\/\/(www\.)?tennisexplorer\.com/i, '');
+
+    const candidates = [
+        `https://r.jina.ai/http://www.tennisexplorer.com${stripped}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(url)}`,
+        `https://corsproxy.io/?url=${encodeURIComponent(url)}`
+    ];
+
+    for (const proxyUrl of candidates) {
+        try {
+            const response = await fetch(proxyUrl, { cache:'force-cache' });
+            if (!response.ok) continue;
+
+            const text = await response.text();
+            if (text && text.length > 200) return text;
+        } catch (_) {}
+    }
+
+    return null;
+}
+
+function extractTennisProfileFromSearch(markup, apiName) {
+    const source = String(markup || '');
+    const candidates = [];
+
+    // HTML links
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        Array.from(doc.querySelectorAll('a[href*="/player/"]')).forEach(a => {
+            const text = String(a.textContent || '').trim();
+            const href = a.getAttribute('href') || '';
+            const score = tennisMatchScore(text, apiName);
+
+            if (href && score > 0) {
+                candidates.push({ href, text, score });
+            }
+        });
+    } catch (_) {}
+
+    // Jina markdown links:
+    // [Djokovic, Novak](https://www.tennisexplorer.com/player/djokovic/)
+    for (const match of source.matchAll(
+        /\[([^\]]+)\]\((https?:\/\/(?:www\.)?tennisexplorer\.com\/player\/[^)\s]+)\)/gi
+    )) {
+        const text = String(match[1] || '').trim();
+        const score = tennisMatchScore(text, apiName);
+        if (score > 0) candidates.push({ href:match[2], text, score });
+    }
+
+    // Relative markdown links
+    for (const match of source.matchAll(
+        /\[([^\]]+)\]\((\/player\/[^)\s]+)\)/gi
+    )) {
+        const text = String(match[1] || '').trim();
+        const score = tennisMatchScore(text, apiName);
+        if (score > 0) candidates.push({ href:match[2], text, score });
+    }
+
+    // Raw HTML
+    for (const match of source.matchAll(
+        /<a\b[^>]*href=["']([^"']*\/player\/[^"']+)["'][^>]*>(.*?)<\/a>/gis
+    )) {
+        const text = String(match[2] || '').replace(/<[^>]+>/g, ' ').trim();
+        const score = tennisMatchScore(text, apiName);
+        if (score > 0) candidates.push({ href:match[1], text, score });
+    }
+
+    if (!candidates.length) return null;
+
+    candidates.sort((a,b) => b.score - a.score);
+
+    try {
+        return new URL(candidates[0].href, 'https://www.tennisexplorer.com').href;
+    } catch (_) {
+        return null;
+    }
+}
+
+function extractTennisPlayerImage(markup, apiName) {
+    const source = String(markup || '');
+    if (!source) return null;
+
+    // HTML first
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        const imgs = Array.from(doc.querySelectorAll('img'));
+
+        // Prefer TennisExplorer's actual player-image folder.
+        let img = imgs.find(el => {
+            const src = String(
+                el.getAttribute('src') ||
+                el.getAttribute('data-src') ||
+                el.getAttribute('data-lazy-src') ||
+                ''
+            );
+            return /\/res\/img\/player\//i.test(src);
+        });
+
+        // Fallback to alt matching if needed
+        if (!img) {
+            img = imgs.find(el => {
+                const alt = String(el.getAttribute('alt') || '');
+                return tennisNamesMatch(alt, apiName);
+            });
+        }
+
+        if (img) {
+            const src =
+                img.getAttribute('src') ||
+                img.getAttribute('data-src') ||
+                img.getAttribute('data-lazy-src') ||
+                img.getAttribute('srcset')?.split(',')[0]?.trim()?.split(' ')[0];
+
+            if (src) {
+                return new URL(src, 'https://www.tennisexplorer.com').href;
+            }
+        }
+    } catch (_) {}
+
+    // Raw/Jina fallback for /res/img/player/ paths
+    const direct = source.match(
+        /https?:\/\/(?:www\.)?tennisexplorer\.com\/res\/img\/player\/[^\s"'<>()[\]]+/i
+    );
+
+    if (direct) return direct[0];
+
+    const relative = source.match(
+        /\/res\/img\/player\/[^\s"'<>()[\]]+/i
+    );
+
+    if (relative) {
+        try {
+            return new URL(relative[0], 'https://www.tennisexplorer.com').href;
+        } catch (_) {}
+    }
+
+    return null;
+}
+
+async function resolveTennisPlayerImage(name) {
+    const key = cleanTennisName(name);
+
+    if (Object.prototype.hasOwnProperty.call(TENNIS_EXPLORER_IMAGE_CACHE, key)) {
+        return TENNIS_EXPLORER_IMAGE_CACHE[key];
+    }
+
+    if (TENNIS_EXPLORER_PENDING[key]) {
+        return TENNIS_EXPLORER_PENDING[key];
+    }
+
+    TENNIS_EXPLORER_PENDING[key] = (async () => {
+        try {
+            const parts = String(name || '').trim().split(/\s+/).filter(Boolean);
+            const surname = parts.length ? parts[parts.length - 1] : name;
+
+            // This is TennisExplorer's actual player-search parameter.
+            const searchUrl =
+                `https://www.tennisexplorer.com/list-players/?order=name&search-text-pl=${encodeURIComponent(surname)}`;
+
+            const searchMarkup = await fetchTennisExplorerText(searchUrl);
+            if (!searchMarkup) {
+                TENNIS_EXPLORER_IMAGE_CACHE[key] = null;
+                return null;
+            }
+
+            const profileUrl = extractTennisProfileFromSearch(searchMarkup, name);
+            if (!profileUrl) {
+                TENNIS_EXPLORER_IMAGE_CACHE[key] = null;
+                return null;
+            }
+
+            const profileMarkup = await fetchTennisExplorerText(profileUrl);
+            if (!profileMarkup) {
+                TENNIS_EXPLORER_IMAGE_CACHE[key] = null;
+                return null;
+            }
+
+            const imageUrl = extractTennisPlayerImage(profileMarkup, name);
+            TENNIS_EXPLORER_IMAGE_CACHE[key] = imageUrl || null;
+            return imageUrl || null;
+        } catch (error) {
+            console.warn(`Tennis image lookup failed for ${name}`, error);
+            TENNIS_EXPLORER_IMAGE_CACHE[key] = null;
+            return null;
+        }
+    })();
+
+    try {
+        return await TENNIS_EXPLORER_PENDING[key];
+    } finally {
+        delete TENNIS_EXPLORER_PENDING[key];
+    }
+}
+
+async function hydrateTennisPlayerPhotos(events) {
+    if (currentSport !== 'tennis') return;
+
+    const sportAtStart = currentSport;
+    const names = [...new Set(
+        (events || [])
+            .flatMap(game => [game.home, game.away])
+            .filter(Boolean)
+    )];
+
+    await Promise.all(names.map(async name => {
+        const key = cleanTennisName(name);
+        const imageUrl =
+            athleteImageUrl('tennis', name) ||
+            await resolveTennisPlayerImage(name);
+
+        if (currentSport !== sportAtStart || !imageUrl) return;
+
+        // Preload before inserting so broken-image icons never appear.
+        const preload = new Image();
+
+        preload.onload = () => {
+            if (currentSport !== sportAtStart) return;
+
+            document.querySelectorAll(
+                `[data-tennis-player-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => {
+                const img = document.createElement('img');
+                img.className = 'tennis-player-photo';
+                img.alt = '';
+                img.setAttribute('aria-hidden', 'true');
+                img.src = imageUrl;
+                img.onerror = () => slot.replaceChildren();
+                slot.replaceChildren(img);
+            });
+        };
+
+        preload.onerror = () => {
+            document.querySelectorAll(
+                `[data-tennis-player-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => slot.replaceChildren());
+        };
+
+        preload.src = imageUrl;
+    }));
+}
+
+const BOX_LIVE_IMAGE_CACHE = {};
+const BOX_LIVE_IMAGE_PENDING = {};
+
+// Exact Box.Live slugs for API names where punctuation/accents/suffixes can differ.
+// Everyone else falls back to the normal first-name-last-name slug.
+const BOX_LIVE_PROFILE_SLUGS = {
+    'andy ruiz jr': 'andy-ruiz-jr',
+    'canelo alvarez': 'canelo-alvarez',
+    'filip hrgovic': 'filip-hrgovic',
+    'jesus alejandro ramos jr': 'jesus-alejandro-ramos-jr',
+    'vito mielnicki jr': 'vito-mielnicki-jr'
+};
+
+function cleanBoxerName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/["'’]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function boxLiveSlug(name) {
+    const key = cleanBoxerName(name);
+    if (BOX_LIVE_PROFILE_SLUGS[key]) return BOX_LIVE_PROFILE_SLUGS[key];
+
+    return key
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function boxingFighterNameWithPhoto(name) {
+    if (currentSport !== 'boxing') return escapeHtml(name);
+    const key = cleanBoxerName(name);
+
+    return `<span class="boxing-fighter-name">
+        <span class="boxing-fighter-photo-slot" data-boxing-fighter-photo="${escapeHtml(key)}"></span>
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+function extractBoxLiveBoxerImage(markup, boxerName) {
+    const source = String(markup || '');
+    if (!source) return null;
+
+    const wanted = cleanBoxerName(boxerName);
+
+    // 1) Real HTML: the reliable Box.Live pattern is:
+    // <img src="..." alt="Oleksandr Usyk" class="">
+    // So prefer an IMG whose ALT text exactly matches the boxer.
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        const images = Array.from(doc.querySelectorAll('img'));
+
+        const exact = images.find(img =>
+            cleanBoxerName(img.getAttribute('alt') || '') === wanted
+        );
+
+        if (exact) {
+            const candidate =
+                exact.getAttribute('src') ||
+                exact.getAttribute('data-src') ||
+                exact.getAttribute('data-lazy-src') ||
+                exact.getAttribute('srcset')?.split(',')[0]?.trim()?.split(' ')[0];
+
+            if (candidate) {
+                return new URL(
+                    candidate.replace(/&amp;/g, '&'),
+                    'https://box.live'
+                ).href;
+            }
+        }
+
+        // Secondary match for minor name variations/suffixes.
+        const near = images.find(img => {
+            const alt = cleanBoxerName(img.getAttribute('alt') || '');
+            return alt && (
+                alt === wanted ||
+                alt.includes(wanted) ||
+                wanted.includes(alt)
+            );
+        });
+
+        if (near) {
+            const candidate =
+                near.getAttribute('src') ||
+                near.getAttribute('data-src') ||
+                near.getAttribute('data-lazy-src') ||
+                near.getAttribute('srcset')?.split(',')[0]?.trim()?.split(' ')[0];
+
+            if (candidate) {
+                return new URL(
+                    candidate.replace(/&amp;/g, '&'),
+                    'https://box.live'
+                ).href;
+            }
+        }
+    } catch (error) {
+        console.warn(`Box.Live HTML parsing failed for ${boxerName}`, error);
+    }
+
+    // 2) Raw HTML regex fallback.
+    // Read every <img> tag, find one whose alt matches the boxer,
+    // then extract src regardless of attribute order.
+    const imgTags = source.match(/<img\b[^>]*>/gi) || [];
+
+    for (const tag of imgTags) {
+        const altMatch = tag.match(/\balt=["']([^"']*)["']/i);
+        if (!altMatch) continue;
+
+        const alt = cleanBoxerName(altMatch[1]);
+        if (!(alt === wanted || alt.includes(wanted) || wanted.includes(alt))) {
+            continue;
+        }
+
+        const srcMatch =
+            tag.match(/\bsrc=["']([^"']+)["']/i) ||
+            tag.match(/\bdata-src=["']([^"']+)["']/i) ||
+            tag.match(/\bdata-lazy-src=["']([^"']+)["']/i);
+
+        if (srcMatch && srcMatch[1]) {
+            try {
+                return new URL(
+                    srcMatch[1].replace(/&amp;/g, '&'),
+                    'https://box.live'
+                ).href;
+            } catch (_) {}
+        }
+    }
+
+    // 3) Jina/markdown fallback.
+    // Box.Live images normally live under /wp-content/uploads/.
+    // Prefer the image URL closest to the boxer's name.
+    const lines = source.split(/\r?\n/);
+    for (let i = 0; i < lines.length; i++) {
+        if (!cleanBoxerName(lines[i]).includes(wanted)) continue;
+
+        const nearby = lines.slice(Math.max(0, i - 5), Math.min(lines.length, i + 6)).join('\n');
+        const match = nearby.match(
+            /https?:\/\/(?:www\.)?box\.live\/wp-content\/uploads\/[^\s"'<>()[\]]+\.(?:png|jpe?g|webp)(?:\?[^\s"'<>()[\]]*)?/i
+        );
+
+        if (match) {
+            return match[0]
+                .replace(/&amp;/g, '&')
+                .replace(/[),.;]+$/, '');
+        }
+    }
+
+    // Last resort: first Box.Live uploads image on the boxer profile.
+    const uploadMatch = source.match(
+        /https?:\/\/(?:www\.)?box\.live\/wp-content\/uploads\/[^\s"'<>()[\]]+\.(?:png|jpe?g|webp)(?:\?[^\s"'<>()[\]]*)?/i
+    );
+
+    if (uploadMatch) {
+        return uploadMatch[0]
+            .replace(/&amp;/g, '&')
+            .replace(/[),.;]+$/, '');
+    }
+
+    return null;
+}
+
+async function fetchBoxLiveProfileSource(profileUrl) {
+    const stripped = String(profileUrl)
+        .replace(/^https?:\/\/(www\.)?box\.live/i, '');
+
+    const candidates = [
+        `https://r.jina.ai/http://box.live${stripped}`,
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(profileUrl)}`,
+        `https://corsproxy.io/?url=${encodeURIComponent(profileUrl)}`
+    ];
+
+    for (const sourceUrl of candidates) {
+        try {
+            const response = await fetch(sourceUrl, { cache: 'force-cache' });
+            if (!response.ok) continue;
+
+            const text = await response.text();
+            if (text && text.length > 300) return text;
+        } catch (error) {
+            console.warn('Box.Live profile source failed', sourceUrl, error);
+        }
+    }
+
+    return null;
+}
+
+async function resolveBoxLiveBoxerImage(name) {
+    const key = cleanBoxerName(name);
+
+    if (Object.prototype.hasOwnProperty.call(BOX_LIVE_IMAGE_CACHE, key)) {
+        return BOX_LIVE_IMAGE_CACHE[key];
+    }
+
+    if (BOX_LIVE_IMAGE_PENDING[key]) {
+        return BOX_LIVE_IMAGE_PENDING[key];
+    }
+
+    BOX_LIVE_IMAGE_PENDING[key] = (async () => {
+        const slug = boxLiveSlug(name);
+        const profileUrl = `https://box.live/boxers/${slug}/`;
+
+        try {
+            const markup = await fetchBoxLiveProfileSource(profileUrl);
+            if (markup) {
+                const imageUrl = extractBoxLiveBoxerImage(markup, name);
+                if (imageUrl) {
+                    BOX_LIVE_IMAGE_CACHE[key] = imageUrl;
+                    return imageUrl;
+                }
+            }
+        } catch (error) {
+            console.warn(`Could not resolve Box.Live image for ${name}`, error);
+        }
+
+        BOX_LIVE_IMAGE_CACHE[key] = null;
+        return null;
+    })();
+
+    try {
+        return await BOX_LIVE_IMAGE_PENDING[key];
+    } finally {
+        delete BOX_LIVE_IMAGE_PENDING[key];
+    }
+}
+
+async function hydrateBoxingFighterPhotos(events) {
+    if (currentSport !== 'boxing') return;
+
+    const sportAtStart = currentSport;
+    const names = [...new Set(
+        (events || [])
+            .flatMap(game => [game.home, game.away])
+            .filter(Boolean)
+    )];
+
+    await Promise.all(names.map(async name => {
+        const key = cleanBoxerName(name);
+
+        // Boxing uses VERIFIED SAVED IMAGES ONLY.
+        // If a boxer is missing from athlete_images.json, show no photo.
+        // This prevents unrelated Box.Live news/site images appearing.
+        const imageUrl = athleteImageUrl('boxing', name);
+
+        if (currentSport !== sportAtStart || !imageUrl) return;
+
+        // Preload first. We do NOT put an <img> into the page unless the
+        // remote image has genuinely loaded, so failed/missing images show
+        // nothing at all rather than Android's broken-image symbol.
+        const preload = new Image();
+
+        preload.onload = () => {
+            if (currentSport !== sportAtStart) return;
+
+            document.querySelectorAll(
+                `[data-boxing-fighter-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => {
+                const img = document.createElement('img');
+                img.className = 'boxing-fighter-photo';
+                img.alt = '';
+                img.setAttribute('aria-hidden', 'true');
+                img.src = imageUrl;
+
+                // If WebView subsequently fails to render it, remove it.
+                img.onerror = () => slot.replaceChildren();
+                slot.replaceChildren(img);
+            });
+        };
+
+        preload.onerror = () => {
+            // Leave the slot completely empty/hidden.
+            document.querySelectorAll(
+                `[data-boxing-fighter-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => slot.replaceChildren());
+        };
+
+        preload.src = imageUrl;
+    }));
+}
+
+const UFC_FIGHTER_IMAGE_CACHE = {};
+const UFC_FIGHTER_IMAGE_PENDING = {};
+
+// A small set of common name aliases; exact normalized matching is preferred.
+const UFC_FIGHTER_NAME_ALIASES = {
+    'alex volkanovski': 'alexander volkanovski',
+    'daniel hooker': 'dan hooker',
+    'nursultan ruziboev': 'nursulton ruziboev',
+    'muhammadjon naimov': 'muhammad naimov',
+    'klaudia sygula': 'klaudia sygula',
+    'sean sharaf': 'sean sharaf'
+};
+
+const UFC_FIGHTER_PROFILE_SLUGS = {
+    'alex volkanovski': 'alexander-volkanovski',
+    'daniel hooker': 'dan-hooker',
+    'nursultan ruziboev': 'nursulton-ruziboev',
+    'muhammadjon naimov': 'muhammad-naimov',
+    'klaudia sygula': 'klaudia-sygula',
+    'sean sharaf': 'sean-sharaf'
+};
+
+function cleanMmaFighterName(value) {
+    return String(value || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/["'’]/g, '')
+        .replace(/\s+/g, ' ')
+        .trim();
+}
+
+function mmaFighterNameWithPhoto(name) {
+    if (currentSport !== 'mma') return escapeHtml(name);
+    const key = cleanMmaFighterName(name);
+    return `<span class="mma-fighter-name">
+        <span class="mma-fighter-photo-slot" data-mma-fighter-photo="${escapeHtml(key)}"></span>
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+function ufcAthleteSlug(name) {
+    const key = cleanMmaFighterName(name);
+
+    if (UFC_FIGHTER_PROFILE_SLUGS[key]) {
+        return UFC_FIGHTER_PROFILE_SLUGS[key];
+    }
+
+    const canonical = UFC_FIGHTER_NAME_ALIASES[key] || key;
+
+    return String(canonical || '')
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '');
+}
+
+function extractUfcHeroProfileImage(markup, fighterName) {
+    const source = String(markup || '');
+    if (!source) return null;
+
+    // 1) Real UFC HTML: specifically target the profile hero image.
+    try {
+        const doc = new DOMParser().parseFromString(source, 'text/html');
+        const hero = doc.querySelector('img.hero-profile__image');
+
+        if (hero) {
+            const candidate =
+                hero.getAttribute('src') ||
+                hero.getAttribute('data-src') ||
+                hero.getAttribute('data-lazy-src') ||
+                hero.getAttribute('srcset')?.split(',')[0]?.trim()?.split(' ')[0];
+
+            if (candidate) {
+                return new URL(candidate.replace(/&amp;/g, '&'), 'https://www.ufc.com').href;
+            }
+        }
+    } catch (error) {
+        console.warn(`UFC HTML parsing failed for ${fighterName}`, error);
+    }
+
+    // 2) Raw HTML regex fallback for hero-profile__image.
+    const imgTags = source.match(/<img\b[^>]*>/gi) || [];
+    for (const tag of imgTags) {
+        if (!/hero-profile__image/i.test(tag)) continue;
+
+        const srcMatch =
+            tag.match(/\bsrc=["']([^"']+)["']/i) ||
+            tag.match(/\bdata-src=["']([^"']+)["']/i) ||
+            tag.match(/\bdata-lazy-src=["']([^"']+)["']/i);
+
+        if (srcMatch && srcMatch[1]) {
+            try {
+                return new URL(srcMatch[1].replace(/&amp;/g, '&'), 'https://www.ufc.com').href;
+            } catch (_) {}
+        }
+    }
+
+    // 3) Jina/markdown response: look directly for UFC's current
+    // athlete_bio_full_body image URL. This is the format the UFC page uses,
+    // e.g. https://ufc.com/images/styles/athlete_bio_full_body/...
+    const directPatterns = [
+        /https?:\/\/(?:www\.)?ufc\.com\/images\/styles\/athlete_bio_full_body\/[^\s"'<>()[\]]+/ig,
+        /https?:\/\/dmxg5wxfqgb4u\.cloudfront\.net\/styles\/athlete_bio_full_body\/[^\s"'<>()[\]]+/ig
+    ];
+
+    for (const pattern of directPatterns) {
+        const matches = source.match(pattern) || [];
+        if (matches.length) {
+            return matches[0]
+                .replace(/&amp;/g, '&')
+                .replace(/[),.;]+$/, '');
+        }
+    }
+
+    return null;
+}
+
+async function fetchUfcProfileSource(profileUrl) {
+    const stripped = String(profileUrl)
+        .replace(/^https?:\/\/(www\.)?ufc\.com/i, '');
+
+    const candidates = [
+        // Jina Reader is normally CORS-friendly and preserves image URLs.
+        `https://r.jina.ai/http://www.ufc.com${stripped}`,
+
+        // HTML fallbacks.
+        `https://api.allorigins.win/raw?url=${encodeURIComponent(profileUrl)}`,
+        `https://corsproxy.io/?url=${encodeURIComponent(profileUrl)}`
+    ];
+
+    for (const sourceUrl of candidates) {
+        try {
+            const response = await fetch(sourceUrl, {
+                cache: 'force-cache'
+            });
+
+            if (!response.ok) continue;
+
+            const text = await response.text();
+
+            if (
+                text &&
+                (
+                    text.includes('athlete_bio_full_body') ||
+                    text.includes('hero-profile__image')
+                )
+            ) {
+                return text;
+            }
+        } catch (error) {
+            console.warn('UFC profile source failed', sourceUrl, error);
+        }
+    }
+
+    return null;
+}
+
+async function findUfcProfileUrlBySearch(name) {
+    try {
+        const searchUrl = `https://www.ufc.com/athletes/all?search=${encodeURIComponent(name)}`;
+        const markup = await fetchUfcProfileSource(searchUrl);
+        if (!markup) return null;
+
+        const doc = new DOMParser().parseFromString(markup, 'text/html');
+        const wanted = cleanMmaFighterName(name);
+
+        const links = Array.from(doc.querySelectorAll('a[href*="/athlete/"]'));
+
+        // Prefer a link whose surrounding card/text contains the requested name.
+        for (const link of links) {
+            const surrounding = cleanMmaFighterName(
+                link.closest('li, article, .c-listing-athlete-flipcard, .c-listing-athlete')?.textContent ||
+                link.textContent ||
+                ''
+            );
+
+            if (surrounding.includes(wanted)) {
+                return new URL(link.getAttribute('href'), 'https://www.ufc.com').href;
+            }
+        }
+
+        // If the UFC search returned a single athlete result, use it.
+        const unique = [...new Set(
+            links
+                .map(link => link.getAttribute('href'))
+                .filter(Boolean)
+        )];
+
+        if (unique.length === 1) {
+            return new URL(unique[0], 'https://www.ufc.com').href;
+        }
+    } catch (error) {
+        console.warn(`Could not search UFC for ${name}`, error);
+    }
+
+    return null;
+}
+
+async function resolveUfcFighterImage(name) {
+    const originalKey = cleanMmaFighterName(name);
+    const key = UFC_FIGHTER_NAME_ALIASES[originalKey] || originalKey;
+
+    if (Object.prototype.hasOwnProperty.call(UFC_FIGHTER_IMAGE_CACHE, key) &&
+        UFC_FIGHTER_IMAGE_CACHE[key]) {
+        return UFC_FIGHTER_IMAGE_CACHE[key];
+    }
+
+    if (UFC_FIGHTER_IMAGE_PENDING[key]) {
+        return UFC_FIGHTER_IMAGE_PENDING[key];
+    }
+
+    UFC_FIGHTER_IMAGE_PENDING[key] = (async () => {
+        const attemptResolve = async () => {
+            const slug = ufcAthleteSlug(name);
+            let profileUrl = `https://www.ufc.com/athlete/${slug}`;
+
+            try {
+                let markup = await fetchUfcProfileSource(profileUrl);
+
+                if (markup) {
+                    const imageUrl = extractUfcHeroProfileImage(markup, name);
+                    if (imageUrl) return imageUrl;
+                }
+
+                const searchedProfileUrl = await findUfcProfileUrlBySearch(name);
+
+                if (searchedProfileUrl && searchedProfileUrl !== profileUrl) {
+                    profileUrl = searchedProfileUrl;
+                    markup = await fetchUfcProfileSource(profileUrl);
+
+                    if (markup) {
+                        const imageUrl = extractUfcHeroProfileImage(markup, name);
+                        if (imageUrl) return imageUrl;
+                    }
+                }
+            } catch (error) {
+                console.warn(`UFC image attempt failed for ${name}`, error);
+            }
+
+            return null;
+        };
+
+        let imageUrl = await attemptResolve();
+
+        // One temporary proxy/network failure should not make a fighter
+        // disappear for the rest of the app session.
+        if (!imageUrl) {
+            await new Promise(resolve => setTimeout(resolve, 650));
+            imageUrl = await attemptResolve();
+        }
+
+        if (imageUrl) {
+            UFC_FIGHTER_IMAGE_CACHE[key] = imageUrl;
+        } else {
+            // IMPORTANT: do NOT cache null.
+            delete UFC_FIGHTER_IMAGE_CACHE[key];
+        }
+
+        return imageUrl || null;
+    })();
+
+    try {
+        return await UFC_FIGHTER_IMAGE_PENDING[key];
+    } finally {
+        delete UFC_FIGHTER_IMAGE_PENDING[key];
+    }
+}
+
+async function hydrateMmaFighterPhotos(events) {
+    if (currentSport !== 'mma') return;
+
+    const sportAtStart = currentSport;
+    const names = [...new Set(
+        (events || []).flatMap(game => [game.home, game.away]).filter(Boolean)
+    )];
+
+    await Promise.all(names.map(async name => {
+        const key = cleanMmaFighterName(name);
+        const imageUrl =
+            athleteImageUrl('mma', name) ||
+            await resolveUfcFighterImage(name);
+
+        if (currentSport !== sportAtStart || !imageUrl) return;
+
+        const preload = new Image();
+        preload.referrerPolicy = 'no-referrer';
+
+        preload.onload = () => {
+            if (currentSport !== sportAtStart) return;
+
+            document.querySelectorAll(
+                `[data-mma-fighter-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => {
+                if (slot.querySelector('img')) return;
+
+                const img = document.createElement('img');
+                img.className = 'mma-fighter-photo';
+                img.alt = '';
+                img.setAttribute('aria-hidden', 'true');
+                img.referrerPolicy = 'no-referrer';
+                img.src = imageUrl;
+                img.onerror = () => slot.replaceChildren();
+                slot.replaceChildren(img);
+            });
+        };
+
+        preload.onerror = () => {
+            // Leave the slot empty. The URL is not permanently marked bad;
+            // returning to MMA can resolve it again.
+            document.querySelectorAll(
+                `[data-mma-fighter-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => slot.replaceChildren());
+        };
+
+        preload.src = imageUrl;
+    }));
+}
 
 function teamSportHasLogos() {
     return currentSport === 'football';
@@ -1847,12 +3474,23 @@ function renderFixtures() {
             const cp=(v,b,o)=>v==null?`<div class="price">—</div>`:`<a class="price-link" href="${url}" target="_blank" rel="noopener" aria-label="${o} ${formatOdds(v)} at ${name}"><div class="price ${b?'best':''}">${formatOdds(v)}</div></a>`;
             return `<div class="bookmaker-row${two}">${bookmakerCell(name)}${cp(p.home,bestHome&&p.home===bestHome.value,firstLabel)}${showDraw?cp(p.draw,bestDraw&&p.draw===bestDraw.value,'Draw'):''}${cp(p.away,bestAway&&p.away===bestAway.value,secondLabel)}</div>`;
         }).join('');
-        return `<article class="fixture-card"><div class="fixture-head"><div class="date">${prettyDate(game.commence_time)}</div><div class="teams"><div class="team">${teamNameWithLogo(game.home)}</div><div class="vs">VS</div><div class="team away">${teamNameWithLogo(game.away)}</div></div></div><div class="best-grid${two}">${outcomeBox(game.home,bestHome)}${showDraw?outcomeBox('Draw',bestDraw):''}${outcomeBox(game.away,bestAway)}</div><button class="compare-btn" onclick="toggleComparison(${index}, this)">Compare all bookmakers ▼</button><div id="compare-${index}" class="comparison"><div class="compare-header${two}"><div>Bookmaker</div><div>${firstLabel}</div>${showDraw?'<div>Draw</div>':''}<div>${secondLabel}</div></div>${rows}</div></article>`;
+        return `<article class="fixture-card"><div class="fixture-head"><div class="date">${prettyDate(game.commence_time)}</div><div class="teams"><div class="team">${currentSport === 'mma' ? mmaFighterNameWithPhoto(game.home) : (currentSport === 'boxing' ? boxingFighterNameWithPhoto(game.home) : (currentSport === 'tennis' ? tennisPlayerNameWithPhoto(game.home) : (['nba','nfl','baseball','hockey'].includes(currentSport) ? renderNorthAmericanTeam(game.home) : teamNameWithLogo(game.home))))}</div><div class="vs">VS</div><div class="team away">${currentSport === 'mma' ? mmaFighterNameWithPhoto(game.away) : (currentSport === 'boxing' ? boxingFighterNameWithPhoto(game.away) : (currentSport === 'tennis' ? tennisPlayerNameWithPhoto(game.away) : (['nba','nfl','baseball','hockey'].includes(currentSport) ? renderNorthAmericanTeam(game.away) : teamNameWithLogo(game.away))))}</div></div></div><div class="best-grid${two}">${outcomeBox(game.home,bestHome)}${showDraw?outcomeBox('Draw',bestDraw):''}${outcomeBox(game.away,bestAway)}</div><button class="compare-btn" onclick="toggleComparison(${index}, this)">Compare all bookmakers ▼</button><div id="compare-${index}" class="comparison"><div class="compare-header${two}"><div>Bookmaker</div><div>${firstLabel}</div>${showDraw?'<div>Draw</div>':''}<div>${secondLabel}</div></div>${rows}</div></article>`;
     }).join('');
 
     // Resolve logos only for the fixtures currently being displayed.
     // This keeps startup traffic low and the results are cached for later views.
-    hydrateTeamLogos(events);
+    if (currentSport === 'football') {
+        hydrateTeamLogos(events);
+    }
+    if (currentSport === 'mma') {
+        hydrateMmaFighterPhotos(events);
+    }
+    if (currentSport === 'boxing') {
+        hydrateBoxingFighterPhotos(events);
+    }
+    if (currentSport === 'tennis') {
+        hydrateTennisPlayerPhotos(events);
+    }
 }
 
 function toggleComparison(index, button) {
@@ -2093,6 +3731,53 @@ function renderGolfTabs() {
     ).join('');
 }
 
+function golferNameWithPhoto(name) {
+    const key = normalizeAthleteManifestName(name);
+    return `<span class="golfer-name-with-photo">
+        <span class="golfer-photo-slot" data-golfer-photo="${escapeHtml(key)}"></span>
+        <span>${escapeHtml(name)}</span>
+    </span>`;
+}
+
+async function hydrateGolfPlayerPhotos(golferNames) {
+    if (currentSport !== 'golf') return;
+
+    const sportAtStart = currentSport;
+    const names = [...new Set((golferNames || []).filter(Boolean))];
+
+    await Promise.all(names.map(async name => {
+        const key = normalizeAthleteManifestName(name);
+        const imageUrl = athleteImageUrl('golf', name);
+        if (!imageUrl || currentSport !== sportAtStart) return;
+
+        const preload = new Image();
+
+        preload.onload = () => {
+            if (currentSport !== sportAtStart) return;
+
+            document.querySelectorAll(
+                `[data-golfer-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => {
+                const img = document.createElement('img');
+                img.className = 'golfer-photo';
+                img.alt = '';
+                img.setAttribute('aria-hidden', 'true');
+                img.src = imageUrl;
+                img.onerror = () => slot.replaceChildren();
+                slot.replaceChildren(img);
+            });
+        };
+
+        preload.onerror = () => {
+            document.querySelectorAll(
+                `[data-golfer-photo="${CSS.escape(key)}"]`
+            ).forEach(slot => slot.replaceChildren());
+        };
+
+        preload.src = imageUrl;
+    }));
+}
+
 function renderGolfOdds() {
     const query = document.getElementById('search').value.trim().toLowerCase();
     const container = document.getElementById('fixtures');
@@ -2145,7 +3830,7 @@ function renderGolfOdds() {
 
         return `<article class="golf-card">
             <div class="golf-card-head">
-                <div class="golfer-name">${golfer}</div>
+                <div class="golfer-name">${golferNameWithPhoto(golfer)}</div>
                 <a class="best-link available" href="${bestUrl}" target="_blank" rel="noopener">
                     <div class="golf-best">
                         <div class="golf-best-odds">${formatOdds(bestValue)}</div>
@@ -2157,6 +3842,8 @@ function renderGolfOdds() {
             <div id="golf-compare-${index}" class="golf-compare">${rows}</div>
         </article>`;
     }).join('');
+
+    hydrateGolfPlayerPhotos(entries.map(([golfer]) => golfer));
 }
 
 function toggleGolfComparison(index, button) {
@@ -2673,9 +4360,9 @@ function accumulatorFixtureCard(leagueKey, game, index) {
         <div class="fixture-head">
             <div class="date">${prettyDate(game.commence_time)}</div>
             <div class="teams">
-                <div class="team">${teamNameWithLogo(game.home)}</div>
+                <div class="team">${currentSport === 'mma' ? mmaFighterNameWithPhoto(game.home) : (currentSport === 'boxing' ? boxingFighterNameWithPhoto(game.home) : teamNameWithLogo(game.home))}</div>
                 <div class="vs">VS</div>
-                <div class="team away">${teamNameWithLogo(game.away)}</div>
+                <div class="team away">${currentSport === 'mma' ? mmaFighterNameWithPhoto(game.away) : (currentSport === 'boxing' ? boxingFighterNameWithPhoto(game.away) : teamNameWithLogo(game.away))}</div>
             </div>
         </div>
 
@@ -2949,7 +4636,19 @@ async function switchLeague(leagueKey) {
 
 async function initialiseApp(){
     const container=document.getElementById('fixtures');container.innerHTML='<div class="loading">Checking upcoming events...</div>';
-    await Promise.all([...Object.keys(LEAGUES).map(k=>fetchLeague(k)),...Object.keys(TENNIS).map(k=>fetchTennis(k)),...Object.keys(GOLF).map(k=>fetchGolf(k)),...Object.keys(CRICKET).map(k=>fetchCricket(k)),...Object.keys(NBA_COMPETITIONS).map(k=>fetchNBACompetition(k)),...Object.keys(NFL_COMPETITIONS).map(k=>fetchNFLCompetition(k)),fetchBaseball(),...Object.keys(HOCKEY).map(k=>fetchHockey(k)),fetchCombatSport('mma'),fetchCombatSport('boxing')]);
+    await Promise.all([
+        loadAthleteImageMap(),
+        ...Object.keys(LEAGUES).map(k=>fetchLeague(k)),
+        ...Object.keys(TENNIS).map(k=>fetchTennis(k)),
+        ...Object.keys(GOLF).map(k=>fetchGolf(k)),
+        ...Object.keys(CRICKET).map(k=>fetchCricket(k)),
+        ...Object.keys(NBA_COMPETITIONS).map(k=>fetchNBACompetition(k)),
+        ...Object.keys(NFL_COMPETITIONS).map(k=>fetchNFLCompetition(k)),
+        fetchBaseball(),
+        ...Object.keys(HOCKEY).map(k=>fetchHockey(k)),
+        fetchCombatSport('mma'),
+        fetchCombatSport('boxing')
+    ]);
     const football=Object.keys(LEAGUES).filter(k=>leagueCache[k]?.available),tennis=Object.keys(TENNIS).filter(k=>tennisCache[k]?.available),golf=Object.keys(GOLF).filter(k=>golfCache[k]?.available),cricket=Object.keys(CRICKET).filter(k=>cricketCache[k]?.available),nba=Object.keys(NBA_COMPETITIONS).filter(k=>nbaCache[k]?.available),nfl=Object.keys(NFL_COMPETITIONS).filter(k=>nflCache[k]?.available);currentSport='football';currentTennis=tennis[0]||null;currentGolf=golf[0]||null;currentCricket=cricket[0]||null;currentNBA=nba.includes('nba')?'nba':(nba[0]||null);currentNFL=nfl.includes('nfl')?'nfl':(nfl[0]||null);renderTennisTabs();renderGolfTabs();renderCricketTabs();renderNBATabs();renderNFLTabs();
     document.getElementById('sport-baseball').style.display=baseballCache.mlb?.available?'':'none';
     const hockey=Object.keys(HOCKEY).filter(k=>hockeyCache[k]?.available);
@@ -2972,6 +4671,49 @@ document.getElementById('odds-format').addEventListener('change', () => {
 });
 
 initialiseApp();
+
+
+
+
+// Auto-hide the complete blue header (tabs + search + odds format) on downward
+// scroll and reveal it again immediately on upward scroll.
+(function setupAutoHideHeaderOnScroll() {
+    let lastScrollY = Math.max(window.scrollY || 0, 0);
+    let ticking = false;
+
+    function getHeader() {
+        return document.querySelector('.topbar');
+    }
+
+    function setHeaderHidden(hidden) {
+        const header = getHeader();
+        if (header) header.classList.toggle('header-scroll-hidden', hidden);
+    }
+
+    function handleScroll() {
+        const currentScrollY = Math.max(window.scrollY || 0, 0);
+        const delta = currentScrollY - lastScrollY;
+
+        if (currentScrollY < 40) {
+            setHeaderHidden(false);
+        } else if (delta > 6) {
+            setHeaderHidden(true);
+        } else if (delta < -6) {
+            setHeaderHidden(false);
+        }
+
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+
+    window.addEventListener('scroll', function () {
+        if (!ticking) {
+            window.requestAnimationFrame(handleScroll);
+            ticking = true;
+        }
+    }, { passive: true });
+})();
+
 </script>
 </body>
 </html>
