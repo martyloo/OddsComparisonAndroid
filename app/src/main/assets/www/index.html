@@ -1524,6 +1524,51 @@
 }
 </style>
 
+
+<style id="compact-footer-logos-v4">
+.responsible-gambling-footer {
+    margin-top:18px !important;
+    padding:12px 8px 14px !important;
+}
+.responsible-gambling-footer .rg-message {
+    margin-bottom:8px !important;
+    font-size:10px !important;
+}
+.responsible-gambling-footer .rg-links {
+    display:flex !important;
+    flex-wrap:wrap !important;
+    justify-content:center !important;
+    gap:4px 7px !important;
+    max-width:620px !important;
+}
+.responsible-gambling-footer .rg-links .rg-logo-link {
+    width:auto !important;
+    height:38px !important;
+    padding:2px 4px !important;
+    flex:0 0 auto !important;
+}
+.responsible-gambling-footer .rg-logo-link img {
+    width:auto !important;
+    height:auto !important;
+    max-width:82px !important;
+    max-height:32px !important;
+    object-fit:contain !important;
+}
+@media(max-width:420px) {
+    .responsible-gambling-footer .rg-links {
+        gap:3px 5px !important;
+    }
+    .responsible-gambling-footer .rg-links .rg-logo-link {
+        height:34px !important;
+        padding:1px 3px !important;
+    }
+    .responsible-gambling-footer .rg-logo-link img {
+        max-width:70px !important;
+        max-height:29px !important;
+    }
+}
+</style>
+
 </head>
 <body>
 
@@ -1561,18 +1606,18 @@
     then fade it away into the app.
   */
   window.addEventListener('load', () => {
-    setTimeout(fadeOutSupportLoader, 1400);
+    setTimeout(fadeOutSupportLoader, 3000);
   });
 
   /* Safety fallback in case the WebView load event is delayed. */
-  setTimeout(fadeOutSupportLoader, 5000);
+  setTimeout(fadeOutSupportLoader, 7000);
 })();
 </script>
 
 <div class="app-shell">
     <div class="topbar">
         <div class="brand">
-            <div class="brand-title">Odds Compare</div>
+            <div class="brand-title">Odds Comparison</div>
         </div>
 
         <div id="sport-tabs" class="sport-tabs" role="tablist" aria-label="Sports">
