@@ -1617,7 +1617,7 @@
 <div class="app-shell">
     <div class="topbar">
         <div class="brand">
-            <div class="brand-title">Odds Comparison</div>
+            <div class="brand-title">Odds Compare</div>
         </div>
 
         <div id="sport-tabs" class="sport-tabs" role="tablist" aria-label="Sports">
@@ -5055,9 +5055,40 @@ function markLiveOddsUpdated() {
         })}`;
 }
 
+
+/* Preserve any open "Compare all bookmakers" panels during the 5-second live refresh. */
+function captureOpenBookmakerComparisons() {
+    return Array.from(
+        document.querySelectorAll('.comparison.open, .golf-compare.open')
+    )
+    .map(panel => panel.id)
+    .filter(Boolean);
+}
+
+function restoreOpenBookmakerComparisons(openIds) {
+    if (!Array.isArray(openIds)) return;
+
+    openIds.forEach(id => {
+        const panel = document.getElementById(id);
+        if (!panel) return;
+
+        panel.classList.add('open');
+
+        const button = panel.previousElementSibling;
+        if (button && button.classList.contains('compare-btn')) {
+            button.textContent = 'Hide bookmaker comparison ▲';
+        }
+    });
+}
+
 async function refreshCurrentOddsSilently() {
     if (liveOddsRefreshBusy || document.hidden) return;
     liveOddsRefreshBusy = true;
+
+    /* Remember which bookmaker comparisons the user has opened.
+       renderFixtures/renderGolfOdds/renderAccumulator rebuild the HTML,
+       so without this the 5-second refresh closes them. */
+    const openComparisonIds = captureOpenBookmakerComparisons();
 
     try {
         if (currentSport === 'football') {
@@ -5163,6 +5194,9 @@ async function refreshCurrentOddsSilently() {
     } catch (error) {
         console.warn('Live odds refresh failed:', error);
     } finally {
+        /* Re-open exactly the comparison panels the user had open before
+           the live odds refresh. */
+        restoreOpenBookmakerComparisons(openComparisonIds);
         liveOddsRefreshBusy = false;
     }
 }
