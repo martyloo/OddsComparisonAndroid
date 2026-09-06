@@ -1,9 +1,10 @@
-name: Build Android APK
+name: Build Android APK and AAB
 
 on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 jobs:
@@ -33,11 +34,45 @@ jobs:
         with:
           gradle-version: '9.5.0'
 
-      - name: Build APK
+      # -------------------------
+      # BUILD DEBUG APK
+      # -------------------------
+
+      - name: Build Debug APK
         run: gradle :app:assembleDebug
 
-      - name: Upload APK
+      - name: Upload Debug APK
         uses: actions/upload-artifact@v4
         with:
           name: OddsCompare-APK
           path: app/build/outputs/apk/debug/app-debug.apk
+
+      # -------------------------
+      # CREATE SIGNING KEY
+      # -------------------------
+
+      - name: Decode Android Keystore
+        run: |
+          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > "$GITHUB_WORKSPACE/oddscompare-upload-key.jks"
+
+      # -------------------------
+      # BUILD SIGNED AAB
+      # -------------------------
+
+      - name: Build Signed Release AAB
+        env:
+          KEYSTORE_FILE: ${{ github.workspace }}/oddscompare-upload-key.jks
+          KEYSTORE_PASSWORD: ${{ secrets.KEYSTORE_PASSWORD }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+        run: gradle :app:bundleRelease
+
+      # -------------------------
+      # UPLOAD AAB
+      # -------------------------
+
+      - name: Upload Release AAB
+        uses: actions/upload-artifact@v4
+        with:
+          name: OddsCompare-AAB
+          path: app/build/outputs/bundle/release/app-release.aab
