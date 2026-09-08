@@ -5083,6 +5083,24 @@ function restoreOpenBookmakerComparisons(openIds) {
 
 async function refreshCurrentOddsSilently() {
     if (liveOddsRefreshBusy || document.hidden) return;
+
+    // IMPORTANT: Do not auto-refresh while the accumulator screen is open.
+    // Re-rendering it every 5 seconds can remove selections mid-click and can
+    // replace the league DOM while the user is interacting with it.
+    const accumulatorIsOpen =
+        (typeof currentMode !== 'undefined' && currentMode === 'accumulator') ||
+        (typeof currentView !== 'undefined' && currentView === 'accumulator') ||
+        (typeof selectedSport !== 'undefined' && selectedSport === 'accumulator') ||
+        Array.from(document.querySelectorAll('[id*="accumulator"], [class*="accumulator"]'))
+            .some(el => {
+                const s = window.getComputedStyle(el);
+                return s.display !== 'none' && s.visibility !== 'hidden' &&
+                       el.getBoundingClientRect().height > 0;
+            });
+
+    if (accumulatorIsOpen) return;
+
+    if (liveOddsRefreshBusy || document.hidden) return;
     liveOddsRefreshBusy = true;
 
     /* Remember which bookmaker comparisons the user has opened.
@@ -5223,40 +5241,53 @@ initialiseApp().then(startLiveOddsRefresh);
 // Auto-hide the complete blue header (tabs + search + odds format) on downward
 // scroll and reveal it again immediately on upward scroll.
 (function setupAutoHideHeaderOnScroll() {
-    let lastScrollY = Math.max(window.scrollY || 0, 0);
-    let ticking = false;
+    let lastScrollY = window.scrollY;
+let upwardScrollSteps = 0;
+let upwardDistanceRemainder = 0;
+const HEADER_UPWARD_STEPS_TO_SHOW = 3;
+const HEADER_SCROLL_STEP_PX = 45;
 
-    function getHeader() {
-        return document.querySelector('.topbar');
-    }
+window.addEventListener('scroll', () => {
+    const header = document.querySelector('.topbar');
+    if (!header) return;
 
-    function setHeaderHidden(hidden) {
-        const header = getHeader();
-        if (header) header.classList.toggle('header-scroll-hidden', hidden);
-    }
+    const currentScrollY = window.scrollY;
+    const delta = currentScrollY - lastScrollY;
 
-    function handleScroll() {
-        const currentScrollY = Math.max(window.scrollY || 0, 0);
-        const delta = currentScrollY - lastScrollY;
-
-        if (currentScrollY < 40) {
-            setHeaderHidden(false);
-        } else if (delta > 6) {
-            setHeaderHidden(true);
-        } else if (delta < -6) {
-            setHeaderHidden(false);
-        }
-
+    // Always show the menu when the user reaches the very top.
+    if (currentScrollY <= 2) {
+        header.classList.remove('hidden');
+        upwardScrollSteps = 0;
+        upwardDistanceRemainder = 0;
         lastScrollY = currentScrollY;
-        ticking = false;
+        return;
     }
 
-    window.addEventListener('scroll', function () {
-        if (!ticking) {
-            window.requestAnimationFrame(handleScroll);
-            ticking = true;
+    // Scrolling down: hide the menu immediately and reset the upward counter.
+    if (delta > 4) {
+        header.classList.add('hidden');
+        upwardScrollSteps = 0;
+        upwardDistanceRemainder = 0;
+    }
+
+    // Scrolling up: require roughly three deliberate scroll steps before showing.
+    if (delta < -4) {
+        upwardDistanceRemainder += Math.abs(delta);
+
+        while (upwardDistanceRemainder >= HEADER_SCROLL_STEP_PX) {
+            upwardScrollSteps += 1;
+            upwardDistanceRemainder -= HEADER_SCROLL_STEP_PX;
         }
-    }, { passive: true });
+
+        if (upwardScrollSteps >= HEADER_UPWARD_STEPS_TO_SHOW) {
+            header.classList.remove('hidden');
+            upwardScrollSteps = 0;
+            upwardDistanceRemainder = 0;
+        }
+    }
+
+    lastScrollY = currentScrollY;
+}, { passive: true });
 })();
 
 </script>
