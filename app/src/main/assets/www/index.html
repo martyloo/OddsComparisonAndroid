@@ -5242,47 +5242,62 @@ initialiseApp().then(startLiveOddsRefresh);
 // scroll and reveal it again immediately on upward scroll.
 (function setupAutoHideHeaderOnScroll() {
     let lastScrollY = window.scrollY;
-let upwardScrollSteps = 0;
-let upwardDistanceRemainder = 0;
-const HEADER_UPWARD_STEPS_TO_SHOW = 3;
-const HEADER_SCROLL_STEP_PX = 45;
+let upwardScrollDistance = 0;
+
+function getThreeSelectionScrollDistance() {
+    // Use the actual height of the first three visible fixture/selection cards,
+    // so the menu only returns after scrolling back past roughly 3 selections.
+    const cards = Array.from(
+        document.querySelectorAll('#fixtures .fixture-card, #fixtures .accumulator-fixture')
+    ).filter(el => {
+        const r = el.getBoundingClientRect();
+        const s = window.getComputedStyle(el);
+        return r.height > 0 && s.display !== 'none' && s.visibility !== 'hidden';
+    }).slice(0, 3);
+
+    if (cards.length) {
+        return cards.reduce((total, card) => {
+            const rect = card.getBoundingClientRect();
+            const style = window.getComputedStyle(card);
+            const marginTop = parseFloat(style.marginTop) || 0;
+            const marginBottom = parseFloat(style.marginBottom) || 0;
+            return total + rect.height + marginTop + marginBottom;
+        }, 0);
+    }
+
+    // Fallback if cards have not rendered yet.
+    return 420;
+}
 
 window.addEventListener('scroll', () => {
-    const header = document.querySelector('.topbar');
-    if (!header) return;
+    const topbar = document.querySelector('.topbar');
+    if (!topbar) return;
 
     const currentScrollY = window.scrollY;
     const delta = currentScrollY - lastScrollY;
 
-    // Always show the menu when the user reaches the very top.
+    // At the very top, always show the whole menu immediately.
     if (currentScrollY <= 2) {
-        header.classList.remove('hidden');
-        upwardScrollSteps = 0;
-        upwardDistanceRemainder = 0;
+        topbar.classList.remove('header-scroll-hidden');
+        upwardScrollDistance = 0;
         lastScrollY = currentScrollY;
         return;
     }
 
-    // Scrolling down: hide the menu immediately and reset the upward counter.
-    if (delta > 4) {
-        header.classList.add('hidden');
-        upwardScrollSteps = 0;
-        upwardDistanceRemainder = 0;
+    // Scrolling down hides the whole menu immediately.
+    if (delta > 2) {
+        topbar.classList.add('header-scroll-hidden');
+        upwardScrollDistance = 0;
     }
 
-    // Scrolling up: require roughly three deliberate scroll steps before showing.
-    if (delta < -4) {
-        upwardDistanceRemainder += Math.abs(delta);
+    // Scrolling up: keep the menu hidden until the user has travelled
+    // upward by approximately the height of three fixture selections.
+    if (delta < -2) {
+        upwardScrollDistance += Math.abs(delta);
 
-        while (upwardDistanceRemainder >= HEADER_SCROLL_STEP_PX) {
-            upwardScrollSteps += 1;
-            upwardDistanceRemainder -= HEADER_SCROLL_STEP_PX;
-        }
-
-        if (upwardScrollSteps >= HEADER_UPWARD_STEPS_TO_SHOW) {
-            header.classList.remove('hidden');
-            upwardScrollSteps = 0;
-            upwardDistanceRemainder = 0;
+        if (upwardScrollDistance >= getThreeSelectionScrollDistance()) {
+            topbar.classList.remove('header-scroll-hidden');
+            upwardScrollDistance = 0;
         }
     }
 
